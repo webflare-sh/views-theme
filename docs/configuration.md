@@ -53,6 +53,7 @@ See [Preferred delivery date](features/delivery-date.md).
 |------------|------|---------|-------------|
 | `ViewsTheme.config.checkoutArrivalDateActive` | bool | `true` | Show `Checkout:ArrivalDate` on the confirm summary |
 | `ViewsTheme.config.checkoutShippingCalculationActive` | bool | `true` | Checked by the callers `Cart:Page:Aside` and `Cart:Drawer:Body` before they render `Cart:Shipping` |
+| `ViewsTheme.config.checkoutPromotionFormActive` | bool | `true` | Checked by the callers `Cart:Page:Aside` and `Cart:Drawer:Footer` before they render `Cart:Options` (promotion only there). Neither core nor the theme has a promotion field on checkout confirm |
 | `ViewsTheme.config.checkoutRevocationNoticeActive` | bool | `true` | Show the "Please note the revocation policy" notice in `Checkout:Confirm:Tos`. Does not affect the `revocation` checkbox, which stays gated by `page.showRevocation` |
 
 Never write `config('…') ?? true` for a bool: Twig compiles `??` to a truthiness test, so a stored `false` falls back to `true`. Test the value directly (`{% if config('…') %}`) and rely on the `config.xml` default.

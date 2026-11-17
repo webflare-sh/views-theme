@@ -47,14 +47,16 @@
             {% endvi_block %}
 
             {% vi_block options %}
-                <twig:ViewsTheme:Cart:Options
-                    class="{{ vi_class('options') }}"
-                    {{ ...vi_attrs('options').defaults({
-                        page: page,
-                    }).all() }}
-                >
-                    <twig:block name="shipping"></twig:block>
-                </twig:ViewsTheme:Cart:Options>
+                {% if config('ViewsTheme.config.checkoutPromotionFormActive') %}
+                    <twig:ViewsTheme:Cart:Options
+                        class="{{ vi_class('options') }}"
+                        {{ ...vi_attrs('options').defaults({
+                            page: page,
+                        }).all() }}
+                    >
+                        <twig:block name="shipping"></twig:block>
+                    </twig:ViewsTheme:Cart:Options>
+                {% endif %}
             {% endvi_block %}
 
             {% vi_block actions %}

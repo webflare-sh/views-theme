@@ -54,11 +54,13 @@
     {% endblock %}
 
     {% block options %}
-        <twig:ViewsTheme:Cart:Options
-            :page="page"
-        >
-            <twig:block name="shipping"></twig:block>
-        </twig:ViewsTheme:Cart:Options>
+        {% if config('ViewsTheme.config.checkoutPromotionFormActive') %}
+            <twig:ViewsTheme:Cart:Options
+                :page="page"
+            >
+                <twig:block name="shipping"></twig:block>
+            </twig:ViewsTheme:Cart:Options>
+        {% endif %}
     {% endblock %}
 
     {% block actions %}
