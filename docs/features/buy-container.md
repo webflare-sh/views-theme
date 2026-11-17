@@ -243,7 +243,6 @@ See [Variants grid](variants-grid.md). Data is attached on PDP by `ProductPageSu
 
 - CMS buy-box config toggle for `showHeader` (and other show* flags)
 - Theme-owned delivery component
-- Variants grid → `ViewsTheme:Cart:Add` bus (still core AddToCart path)
 - `Box:Footer` adopting `Product:Prices`
 - Manufacturer logo / CMS manufacturer-logo element
 

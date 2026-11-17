@@ -40,7 +40,7 @@ All UI lives under UX components (`components/Drawer/*`, `components/Cart/*`, `c
 - Summary, cart options (promotion form + shipping pre-calculation), CTAs (`Cart:Actions` → `Cart:Action:Checkout` + `Cart:Action:Cart` → `Button`) — Footer only when cart has line items
 - Empty, loading (`aria-busy`; spinner on first fill), session flash messages (success/danger from core cart mutations), and client error (`role="alert"`) states
 - Header badge (generic `Count`, `countKey: cartCount`) tracks cart via `ViewsTheme:Cart:Changed` — not core `OffCanvasCart` / `CartWidget`
-- Listing/PDP buy: `Product:Action:Buy` → `Cart:Add` → badge + drawer open (Action). Variants grid still core `data-add-to-cart` (follow-up)
+- Listing/PDP buy: `Product:Action:Buy` → `Cart:Add` → badge + drawer open (Action). Variants grid: `VariantsGrid:Container` → `Cart:Add` with `url` (its own add route) → same badge + drawer open
 - Cart page mutations refresh theme `Cart:Page` islands — see [cart page](cart-page.md)
 
 ## How it works
@@ -63,7 +63,7 @@ Always-mounted `ViewsTheme:Cart` (header) owns HTTP against core checkout endpoi
 
 | Event (request) | Payload | HTTP |
 |-----------------|---------|------|
-| `ViewsTheme:Cart:Add` | `{ items? \| formData, source? }` | `POST frontend.checkout.line-item.add` |
+| `ViewsTheme:Cart:Add` | `{ items? \| formData, url?, source? }` | `POST url` if given, else `frontend.checkout.line-item.add` |
 | `ViewsTheme:Cart:Remove` | `{ lineItemId, source? }` | `POST frontend.checkout.line-item.delete` |
 | `ViewsTheme:Cart:Update` | `{ lineItemId, quantity, source? }` | `POST frontend.checkout.line-item.change-quantity` |
 | `ViewsTheme:Cart:Promote` | `{ code? \| formData, source? }` | `POST frontend.checkout.promotion.add` |
@@ -76,7 +76,7 @@ AJAX POSTs **omit** `redirectTo` / `forwardTo` (and use `redirect: 'manual'`). E
 
 After a successful mutation, Cart refreshes `window.cartCount` from `frontend.checkout.cart.json` and emits `Changed`. Badge updates itself; Body (if mounted) re-fetches drawer HTML and swaps islands.
 
-Callers may emit `ViewsTheme:Cart:Add` / `ViewsTheme:Cart:Changed` directly. `Product:Action:Buy` emits `Cart:Add` with form `FormData`. Variants grid still uses core AddToCart (follow-up).
+Callers may emit `ViewsTheme:Cart:Add` / `ViewsTheme:Cart:Changed` directly. `Product:Action:Buy` emits `Cart:Add` with form `FormData`. `VariantsGrid:Container` emits it with form `FormData` plus `url` (`frontend.checkout.variants-grid.add`, which drops zero-quantity rows).
 
 ### In-open DOM updates
 

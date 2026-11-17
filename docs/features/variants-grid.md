@@ -11,7 +11,7 @@ Paginated variants grid on product detail pages for products with variants.
 - Server-side filtering of rows with zero quantity via a dedicated controller
 - Seamless lazy-loading pagination via JavaScript fetch (`VariantsGrid:Pagination` → theme `Pagination`)
 - Preserved quantities across pagination pages
-- Offcanvas cart opens after adding variants, matching default Shopware behavior
+- Theme [cart drawer](cart-drawer.md) opens and the header badge updates after adding variants (`ViewsTheme:Cart:Add`)
 - Configurable rows per page via plugin configuration
 - Unavailable variants are rendered as disabled rows
 - Color/option media rendered as swatches where applicable (`Column:Options` CVA `swatch`)
@@ -46,7 +46,9 @@ The grid form posts to a dedicated controller:
 frontend.checkout.variants-grid.add
 ```
 
-This controller receives every row, ignores entries with `quantity <= 0`, creates the remaining line items, and adds them to the cart. The form keeps core `data-add-to-cart` — response is handled by Shopware's core `AddToCartPlugin` (core offcanvas path). Theme [cart drawer](cart-drawer.md) auto-open / badge is **not** wired for variants-grid yet (product-box Buy uses `ViewsTheme:Cart:Add`).
+This controller receives every row, ignores entries with `quantity <= 0`, creates the remaining line items, and adds them to the cart.
+
+On submit, `Container.js` cancels the native POST, writes hidden inputs for quantities set on other pages, and emits `ViewsTheme:Cart:Add` with the form `FormData` and `url` = the form `action`. The theme `Cart` owner posts it to `frontend.checkout.variants-grid.add` (not core `line-item.add`), then the [cart drawer](cart-drawer.md) opens and the badge updates. The form does **not** use core `data-add-to-cart`: its `AddToCart` plugin only hands off to core `OffCanvasCart`, which the theme does not render, so the submit was swallowed. `redirectTo` / `redirectParameters` stay in the form for no-JS; `Cart` strips them before the fetch.
 
 The same controller also provides an AJAX endpoint for lazy pagination:
 
@@ -58,7 +60,7 @@ It returns the rendered table rows and pagination HTML for the requested page. I
 
 ### Storefront JavaScript
 
-Co-located `VariantsGrid/Container.js` (`ShopwareComponent` on `data-component="ViewsTheme:VariantsGrid:Container"`) handles button-state management, AJAX pagination, quantity preservation across pages, and error feedback.
+Co-located `VariantsGrid/Container.js` (`ShopwareComponent` on `data-component="ViewsTheme:VariantsGrid:Container"`) handles button-state management, AJAX pagination, quantity preservation across pages, error feedback, and the add-to-cart submit (`addEvent` option, default `ViewsTheme:Cart:Add`).
 
 ### Hooks
 

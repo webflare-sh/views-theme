@@ -10,6 +10,7 @@ export default class VariantsGridContainer extends ShopwareComponent {
         memorySelector: '[data-action="memory"]',
         errorSelector: '[role="alert"]',
         liveRegionSelector: '[aria-live]',
+        addEvent: 'ViewsTheme:Cart:Add',
     };
 
     init() {
@@ -186,7 +187,15 @@ export default class VariantsGridContainer extends ShopwareComponent {
         this._buyButton.disabled = !hasSelection;
     }
 
-    _onSubmit() {
+    /**
+     * Write off-page quantities as hidden inputs, then hand the form to the `Cart` owner
+     * (`Cart:Add`), which posts it to the grid's own add route and opens the drawer.
+     *
+     * @param {SubmitEvent} event
+     */
+    _onSubmit(event) {
+        event.preventDefault();
+
         this._syncVisibleInputsToMap();
 
         if (this._memory) {
@@ -205,6 +214,12 @@ export default class VariantsGridContainer extends ShopwareComponent {
             if (quantity > 0 && !visibleIds.has(variantId) && this._memory) {
                 this._memory.insertAdjacentHTML('beforeend', this._buildHiddenInputs(variantId, quantity));
             }
+        });
+
+        window.Shopware.emit(this.options.addEvent, {
+            formData: new FormData(this._form),
+            url: this._form.getAttribute('action'),
+            source: this._form,
         });
     }
 
