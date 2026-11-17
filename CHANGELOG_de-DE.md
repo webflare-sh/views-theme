@@ -1,3 +1,12 @@
+# 2.0.1
+
+**Hinweise zum Update**
+- Das Formular des Varianten-Grids nutzt nicht mehr Shopwares `data-add-to-cart`. Das JS von `VariantsGrid:Container` schickt das Formular jetzt über den Theme-Warenkorb (`ViewsTheme:Cart:Add`), sodass sich nach dem Hinzufügen der Warenkorb-Drawer öffnet. Child-Themes, die den `form`-Block des Grids überschreiben und noch `data-add-to-cart="true"` setzen, müssen das Attribut entfernen.
+- `ViewsTheme:Cart:Add` nimmt optional eine `url` an. Ist sie gesetzt, sendet der Warenkorb die Formulardaten dorthin statt an `frontend.checkout.line-item.add`.
+
+**Changelog**
+- Das Hinzufügen von Produkten aus dem Varianten-Grid auf der Produktseite funktioniert wieder: Die gewählten Varianten landen im Warenkorb und der Warenkorb-Drawer öffnet sich (#178)
+
 # 2.0.0
 
 **Hinweise zum Update**

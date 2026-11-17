@@ -1,3 +1,12 @@
+# 2.0.1
+
+**Upgrade notes**
+- The variants grid form no longer uses Shopware's `data-add-to-cart`. Its `VariantsGrid:Container` JS now sends the form through the theme cart (`ViewsTheme:Cart:Add`), so the cart drawer opens after adding. Child themes that override the grid's `form` block and still set `data-add-to-cart="true"` must remove it.
+- `ViewsTheme:Cart:Add` accepts an optional `url`. When it is set, the cart posts the form data there instead of to `frontend.checkout.line-item.add`.
+
+**Changelog**
+- Adding products from the variants grid on the product page works again: the selected variants are added to the cart and the cart drawer opens (#178)
+
 # 2.0.0
 
 **Upgrade notes**
