@@ -62,7 +62,8 @@ export default class Cart extends ShopwareComponent {
                 ? this._forAjax(payload.formData)
                 : this._buildAddFormData(payload)
 
-            await this._post(this.options.addPath, formData)
+            // `url` lets a form with its own add route (variants grid) keep it.
+            await this._post(payload?.url || this.options.addPath, formData)
         }, payload)
     }
 

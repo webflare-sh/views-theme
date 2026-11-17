@@ -444,7 +444,7 @@ Lazy-loaded end-side cart drawer. **Cart** owns mutations; **Body** owns in-open
 - Action lifecycle (critical): **clone the [shell template](#shell-templates-instant-open) + mount + open on every open** (no request before open); on `ViewsTheme:Drawer:Close` **unmount** drawer root — see [Lazy-loaded shells](#lazy-loaded-shells-critical)
 - Body first fill: the shell's Body renders pending (`pending: true`, `ViewsTheme:Spinner`, `aria-busy`), fetches the drawer HTML on `init()`, then replaces its children with the response body's children (server order) and swaps the Heading. A failed fill drops the loader and shows the alert; the next `Cart:Changed` retries
 - Intents: `ViewsTheme:Cart:Add|Remove|Update|Promote|Configure` → Cart HTTP (serial queue, per-lineItemId coalesce) → `ViewsTheme:Cart:Changed`
-- Theme owns header drawer open + in-drawer mutations; `Product:Action:Buy` → `Cart:Add` → badge + Action `open()` when `openOnActions` includes `add` (default). Public `callMethod(…, 'open'|'close')`. Variants grid still core AddToCart
+- Theme owns header drawer open + in-drawer mutations; `Product:Action:Buy` → `Cart:Add` → badge + Action `open()` when `openOnActions` includes `add` (default). Public `callMethod(…, 'open'|'close')`. Variants grid also → `Cart:Add` (with `url` = its own add route)
 - Body on `Changed`: re-fetch drawer HTML → swap Flashes / Items / Footer / Heading by `data-component` identity (shell stays mounted; flashes consume session bag)
 - Badge listens to `ViewsTheme:Cart:Changed` and updates text/`hidden` (no CSS class strings in JS)
 
