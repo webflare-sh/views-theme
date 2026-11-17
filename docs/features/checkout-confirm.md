@@ -197,6 +197,8 @@ Both controls are `Form:Checkbox`. Do **not** implement 6.8 `showTosCheckbox` au
 | `formViolations` | ambient | Paths `/tos`, `/revocation` |
 | `page` | ambient | `page.showRevocation` gates the revocation checkbox |
 
+The revocation notice (`checkout.confirmRevocationNoticeModal`, `revocation_notice` block) renders only when `ViewsTheme.config.checkoutRevocationNoticeActive` is on (default on). The switch does not touch the `revocation` checkbox; that stays gated by `page.showRevocation` (digital products).
+
 Snippets: `checkout.confirmTermsHeader`, `checkout.confirmTermsTextModal`, `checkout.confirmRevocationNoticeModal`. Modal tags match `Privacy:Note` (`<a data-ajax-modal>`).
 
 ## Checkout:Additions

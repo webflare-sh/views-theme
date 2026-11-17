@@ -34,9 +34,11 @@
     {% endblock %}
 
     {% block revocation_notice %}
-        <div {{ vi_attrs('revocationNotice') }} class="{{ vi_class('revocationNotice') }}">
-            {{ revocationNotice|raw }}
-        </div>
+        {% if config('ViewsTheme.config.checkoutRevocationNoticeActive') %}
+            <div {{ vi_attrs('revocationNotice') }} class="{{ vi_class('revocationNotice') }}">
+                {{ revocationNotice|raw }}
+            </div>
+        {% endif %}
     {% endblock %}
 
     {% block tos_control %}
