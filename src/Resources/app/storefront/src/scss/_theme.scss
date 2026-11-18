@@ -114,7 +114,7 @@
   --vi-drawer-width: min(420px, 100vw);
 }
 
-.vi-product-listing-results__grid {
+.vi-product-listing {
   @include media-breakpoint-up(xxl) {
     --vi-product-basis: 320px;
   }
