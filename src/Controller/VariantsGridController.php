@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace Webflare\ViewsTheme\Controller;
 
-use Webflare\ViewsTheme\Service\VariantsLoader;
-use Webflare\ViewsTheme\Struct\VariantsGridPagination;
+use Webflare\ViewsTheme\Service\VariantsGridLoader;
 use Shopware\Core\Checkout\Cart\Cart;
 use Shopware\Core\Checkout\Cart\Error\Error;
 use Shopware\Core\Checkout\Cart\LineItemFactoryRegistry;
@@ -14,7 +13,6 @@ use Shopware\Core\Framework\Routing\RoutingException;
 use Shopware\Core\Framework\Validation\DataBag\RequestDataBag;
 use Shopware\Core\PlatformRequest;
 use Shopware\Core\System\SalesChannel\SalesChannelContext;
-use Shopware\Core\System\SystemConfig\SystemConfigService;
 use Shopware\Storefront\Controller\StorefrontController;
 use Shopware\Storefront\Framework\Routing\StorefrontRouteScope;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -26,16 +24,13 @@ use Twig\Environment;
 #[Route(defaults: [PlatformRequest::ATTRIBUTE_ROUTE_SCOPE => [StorefrontRouteScope::ID]])]
 class VariantsGridController extends StorefrontController
 {
-    private const CONFIG_ROWS_PER_PAGE = 'ViewsTheme.config.variantsGridRowsPerPage';
-    private const PAGE_PARAMETER = 'variantsPage';
     private const DEFAULT_ROWS_TEMPLATE = '@ViewsTheme/components/VariantsGrid/Rows.html.twig';
     private const DEFAULT_PAGINATION_TEMPLATE = '@ViewsTheme/components/VariantsGrid/Pagination.html.twig';
 
     public function __construct(
         private readonly CartService $cartService,
         private readonly LineItemFactoryRegistry $lineItemFactoryRegistry,
-        private readonly VariantsLoader $variantsLoader,
-        private readonly SystemConfigService $systemConfig,
+        private readonly VariantsGridLoader $variantsGridLoader,
         private readonly Environment $twig,
     ) {}
 
@@ -83,40 +78,19 @@ class VariantsGridController extends StorefrontController
     public function loadPage(Request $request, SalesChannelContext $context): JsonResponse
     {
         $parentId = (string) $request->query->get('parentId');
-        $page = $request->query->getInt(self::PAGE_PARAMETER, 1);
 
         if ($parentId === '') {
             throw RoutingException::missingRequestParameter('parentId');
         }
 
-        $limit = (int) $this->systemConfig->get(
-            self::CONFIG_ROWS_PER_PAGE,
-            $context->getSalesChannelId(),
-        );
+        $variantsGrid = $this->variantsGridLoader->load($parentId, $request, $context);
 
-        if ($limit < 1) {
-            $limit = 10;
+        if ($variantsGrid === null) {
+            return new JsonResponse(['rows' => '', 'pagination' => '', 'page' => 1, 'total' => 0]);
         }
 
-        $total = $this->variantsLoader->countVariantsByParentId($parentId, $context);
-
-        if ($total === 0) {
-            return new JsonResponse(['rows' => '', 'pagination' => '']);
-        }
-
-        $totalPages = (int) ceil($total / $limit);
-
-        if ($page > $totalPages) {
-            $page = $totalPages;
-        }
-
-        if ($page < 1) {
-            $page = 1;
-        }
-
-        $offset = ($page - 1) * $limit;
-        $pagedVariants = $this->variantsLoader->loadVariantsPageByParentId($parentId, $offset, $limit, $context);
-        $groups = $this->variantsLoader->extractConfiguratorGroups($pagedVariants);
+        $pagination = $variantsGrid->getPagination();
+        $selectedOptionIds = $variantsGrid->getSelectedOptionIds();
 
         $rowsTemplate = $this->resolveTemplate(
             $request->query->get('rowsTemplate'),
@@ -131,20 +105,23 @@ class VariantsGridController extends StorefrontController
             $rowsHtml = $this->twig->createTemplate('{{- component(name, props) -}}')->render([
                 'name' => 'ViewsTheme:VariantsGrid:Rows',
                 'props' => [
-                    'variants' => $pagedVariants,
-                    'groups' => $groups,
+                    'variants' => $variantsGrid->getVariants(),
+                    'groups' => $variantsGrid->getGroups(),
                 ],
             ]);
         } else {
             $rowsHtml = $this->renderView($rowsTemplate, [
-                'variants' => $pagedVariants,
-                'groups' => $groups,
+                'variants' => $variantsGrid->getVariants(),
+                'groups' => $variantsGrid->getGroups(),
             ]);
         }
 
         $paginationProps = [
-            'pagination' => new VariantsGridPagination($page, $limit, $total),
-            'pageParameter' => self::PAGE_PARAMETER,
+            'pagination' => $pagination,
+            'pageParameter' => $variantsGrid->getPageParameter(),
+            'query' => $selectedOptionIds === []
+                ? []
+                : [$variantsGrid->getOptionsParameter() => implode('|', $selectedOptionIds)],
         ];
 
         // The default template is an anonymous UX component (`{% props %}`), so it must render as a component
@@ -160,6 +137,8 @@ class VariantsGridController extends StorefrontController
         return new JsonResponse([
             'rows' => $rowsHtml,
             'pagination' => $paginationHtml,
+            'page' => $pagination->getPage(),
+            'total' => $pagination->getTotal(),
         ]);
     }
 

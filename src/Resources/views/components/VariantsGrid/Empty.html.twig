@@ -1,0 +1,23 @@
+{% props
+    message = 'variantsGrid.filter.empty'|trans|sw_sanitize,
+    cva = {},
+%}
+
+{% do vi_define_cva({
+    root: { base: 'vi-variants-grid-empty' },
+}|replace_recursive(cva)) %}
+
+<div
+    {{ attributes.defaults({
+        'data-component': 'ViewsTheme:VariantsGrid:Empty',
+    }) }}
+    class="{{ vi_class('root') }}"
+>
+    {% block content %}
+        <twig:ViewsTheme:Alert
+            type="info"
+            content="{{ message }}"
+            role="status"
+        />
+    {% endblock %}
+</div>

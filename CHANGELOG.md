@@ -3,9 +3,14 @@
 **Upgrade notes**
 - The variants grid form no longer uses Shopware's `data-add-to-cart`. Its `VariantsGrid:Container` JS now sends the form through the theme cart (`ViewsTheme:Cart:Add`), so the cart drawer opens after adding. Child themes that override the grid's `form` block and still set `data-add-to-cart="true"` must remove it.
 - `ViewsTheme:Cart:Add` accepts an optional `url`. When it is set, the cart posts the form data there instead of to `frontend.checkout.line-item.add`.
+- `page.extensions.viewsTheme.variantsGrid` is now a `Webflare\ViewsTheme\Struct\VariantsGrid` instead of an `ArrayStruct`. Twig access (`variantsGrid.variants`, …) is unchanged; PHP code that read it with `->get('…')` must use the getters.
+- Child themes that override the `buy` block of `Product:BuyContainer` and mount `VariantsGrid:Container` themselves should also pass `selectedOptionIds` and `optionsParameter` from `variantsGrid`. Without them a filtered link shows the right rows but no checked filter options.
+- `VariantsLoader::extractConfiguratorGroups()` was removed. The grid columns now come from the option groups of all visible variants (`VariantsLoader::loadOptionGroupsByParentId()`), and `VariantsLoader` takes `property_group_option.repository` as a second argument.
+- While rows load, the `is-loading` class is set on the grid form (`.variants-grid-form`) instead of `.variants-grid-container`, so the new filter stays usable. Child theme styles for the old selector must move.
 
 **Changelog**
 - Adding products from the variants grid on the product page works again: the selected variants are added to the cart and the cart drawer opens (#178)
+- The variants grid can be filtered: one dropdown per option group (for example color and size) where several options can be selected. Only matching variants are listed, entered quantities are kept, and the filtered page can be shared as a link
 - The labels and help texts of the theme settings now come from Administration snippets instead of inline translations in `theme.json`, which Shopware 6.7 deprecates. They read the same in English and German (#156)
 
 # 2.0.0

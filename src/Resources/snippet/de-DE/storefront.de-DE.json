@@ -92,6 +92,11 @@
         },
         "pagination": {
             "pageLoaded": "Seite %page% geladen"
+        },
+        "filter": {
+            "label": "Varianten filtern",
+            "empty": "Keine Varianten entsprechen den gewählten Filtern.",
+            "results": "Varianten gefunden: %total%"
         }
     },
     "checkout": {

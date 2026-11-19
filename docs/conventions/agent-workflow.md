@@ -58,7 +58,7 @@ Write a comment only when the code cannot say it: why a branch or value exists, 
 |------|-------------|
 | Annotations: JSDoc / PHPDoc tags (`@param`, `@var`, `@type`, `@typedef`, `@return`, `@extends`, `@template`, `@module`, `{@see}`) | Summaries that restate the class, function, option, or prop name ("View-model for X", "identity host", "Public API") |
 | Lint / analyzer directives, generated-file notices | Narration of what the next lines do, section labels |
-| Prop value lists ([ux-components.md](ux-components.md#annotate-possible-values)) and the empty `init()` note ([javascript.md](javascript.md)) | Architecture notes that belong in `docs/` (SoT, owner/executor, "mirrors X", "core parity") |
+| Prop value lists ([ux-components.md](ux-components.md#annotate-possible-values)) | Architecture notes that belong in `docs/` (SoT, owner/executor, "mirrors X", "core parity"), or a note inside an empty `init() {}` |
 | Empty `catch` / fall-through reasons | Commented-out code |
 
 ## MCP servers

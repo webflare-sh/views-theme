@@ -4,6 +4,9 @@
     pagination = {},
     pageParameter = 'variantsPage',
     parentId,
+    selectedOptionIds = [],
+    optionsParameter = 'variantsOptions',
+    showFilter = true,
     cva = {},
 %}
 
@@ -12,12 +15,19 @@
 
 {% do vi_define_cva({
     root: { base: 'vi-variants-grid variants-grid-container' },
+    filter: { base: 'mb-3' },
+    empty: { base: 'mb-3' },
     actions: { base: 'variants-grid-actions d-flex justify-content-between align-items-center' },
 }|replace_recursive(cva)) %}
+{% do vi_define_attrs(['filter', 'empty']) %}
 
 <div
     {{ attributes.defaults({
         'data-component': 'ViewsTheme:VariantsGrid:Container',
+        'data-component-options': {
+            pageParameter: pageParameter,
+            optionsParameter: optionsParameter,
+        }|json_encode,
         'data-load-url': path('frontend.checkout.variants-grid.load'),
         'data-parent-id': parentId,
     }) }}
@@ -33,7 +43,20 @@
             aria-live="polite"
             aria-atomic="true"
             data-page-loaded-template="{{ 'variantsGrid.pagination.pageLoaded'|trans|sw_sanitize }}"
+            data-results-template="{{ 'variantsGrid.filter.results'|trans|sw_sanitize }}"
         ></div>
+    {% endblock %}
+
+    {% block filter %}
+        {% if showFilter and groups|length > 0 %}
+            <twig:ViewsTheme:VariantsGrid:Filter
+                class="{{ vi_class('filter') }}"
+                {{ ...vi_attrs('filter').defaults({
+                    groups: groups,
+                    selectedOptionIds: selectedOptionIds,
+                }).all() }}
+            />
+        {% endif %}
     {% endblock %}
 
     {% block form %}
@@ -76,6 +99,15 @@
                 </table>
             </div>
 
+            {% block empty %}
+                <twig:ViewsTheme:VariantsGrid:Empty
+                    class="{{ vi_class('empty') }}"
+                    {{ ...vi_attrs('empty').defaults({
+                        hidden: pagination.total|default(0) > 0,
+                    }).all() }}
+                />
+            {% endblock %}
+
             <input type="hidden" name="redirectTo" value="frontend.detail.page">
             <input
                 type="hidden"
@@ -89,6 +121,7 @@
                     <twig:ViewsTheme:VariantsGrid:Pagination
                         :pagination="pagination"
                         :pageParameter="pageParameter"
+                        :query="selectedOptionIds is empty ? {} : { (optionsParameter): selectedOptionIds|join('|') }"
                     />
                 </div>
                 {% block buy_button %}

@@ -3,9 +3,14 @@
 **Hinweise zum Update**
 - Das Formular des Varianten-Grids nutzt nicht mehr Shopwares `data-add-to-cart`. Das JS von `VariantsGrid:Container` schickt das Formular jetzt über den Theme-Warenkorb (`ViewsTheme:Cart:Add`), sodass sich nach dem Hinzufügen der Warenkorb-Drawer öffnet. Child-Themes, die den `form`-Block des Grids überschreiben und noch `data-add-to-cart="true"` setzen, müssen das Attribut entfernen.
 - `ViewsTheme:Cart:Add` nimmt optional eine `url` an. Ist sie gesetzt, sendet der Warenkorb die Formulardaten dorthin statt an `frontend.checkout.line-item.add`.
+- `page.extensions.viewsTheme.variantsGrid` ist jetzt ein `Webflare\ViewsTheme\Struct\VariantsGrid` statt eines `ArrayStruct`. Der Zugriff in Twig (`variantsGrid.variants`, …) bleibt gleich; PHP-Code, der mit `->get('…')` gelesen hat, muss die Getter verwenden.
+- Child-Themes, die den `buy`-Block von `Product:BuyContainer` überschreiben und `VariantsGrid:Container` selbst einbinden, sollten zusätzlich `selectedOptionIds` und `optionsParameter` aus `variantsGrid` übergeben. Ohne sie zeigt ein gefilterter Link die richtigen Zeilen, aber keine ausgewählten Filteroptionen.
+- `VariantsLoader::extractConfiguratorGroups()` wurde entfernt. Die Spalten des Grids kommen jetzt aus den Optionsgruppen aller sichtbaren Varianten (`VariantsLoader::loadOptionGroupsByParentId()`), und `VariantsLoader` erhält `property_group_option.repository` als zweites Argument.
+- Während Zeilen laden, sitzt die Klasse `is-loading` auf dem Formular des Grids (`.variants-grid-form`) statt auf `.variants-grid-container`, damit der neue Filter bedienbar bleibt. Child-Theme-Styles für den alten Selektor müssen umziehen.
 
 **Changelog**
 - Das Hinzufügen von Produkten aus dem Varianten-Grid auf der Produktseite funktioniert wieder: Die gewählten Varianten landen im Warenkorb und der Warenkorb-Drawer öffnet sich (#178)
+- Das Varianten-Grid lässt sich filtern: ein Dropdown pro Optionsgruppe (zum Beispiel Farbe und Größe), in dem mehrere Optionen gewählt werden können. Es werden nur passende Varianten gelistet, eingegebene Mengen bleiben erhalten, und die gefilterte Ansicht lässt sich als Link teilen
 - Beschriftungen und Hilfetexte der Theme-Einstellungen kommen jetzt aus Administrations-Snippets statt aus Inline-Übersetzungen in der `theme.json`, die Shopware 6.7 als veraltet markiert. Auf Deutsch und Englisch lauten sie wie bisher (#156)
 
 # 2.0.0

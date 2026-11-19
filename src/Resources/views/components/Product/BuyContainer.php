@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Webflare\ViewsTheme\Resources\views\components\Product;
 
 use Shopware\Core\Content\Product\SalesChannel\SalesChannelProductEntity;
-use Shopware\Core\Framework\Struct\ArrayStruct;
 use Shopware\Core\System\SystemConfig\SystemConfigService;
 use Webflare\ViewsTheme\Service\SalesChannelContextAccessor;
+use Webflare\ViewsTheme\Struct\VariantsGrid;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
@@ -90,15 +90,7 @@ class BuyContainer
 
         $this->productActive = (bool) $this->product->getActive();
 
-        $variantCount = 0;
-        if ($this->variantsGrid instanceof ArrayStruct) {
-            $variants = $this->variantsGrid->get('variants');
-            if (\is_countable($variants)) {
-                $variantCount = \count($variants);
-            }
-        }
-
-        $this->useVariantsGrid = $variantsGridActive && $variantCount > 0;
+        $this->useVariantsGrid = $variantsGridActive && $this->variantsGrid instanceof VariantsGrid;
 
         $buyBlockVisible = $this->productActive
             && $this->showBuyForm

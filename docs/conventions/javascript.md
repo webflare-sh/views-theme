@@ -116,7 +116,7 @@ IDE: root `jsconfig.json` paths + `include` for components, modules, and `shopwa
 
 **Critical:** Every `data-component` **must** have co-located `Name.js` (import-map entry). Shopware loads every `[data-component]` via dynamic `import()` — a missing module becomes a bare specifier URL and fails in the console. Parent-owned identity (partial swaps, nested roots) still uses `data-component` + real JS (minimal `ShopwareComponent` is fine when the parent owns behavior).
 
-**Critical:** Every `ShopwareComponent` class **must** define `init()`, even when empty (`init() {}` with a one-line comment). Core's base `init()` calls `console.warn('Init method has to be implemented.')`, so a missing override logs once per instance.
+**Critical:** Every `ShopwareComponent` class **must** define `init()`, even when empty (bare `init() {}`, no comment inside). Core's base `init()` calls `console.warn('Init method has to be implemented.')`, so a missing override logs once per instance.
 
 Find nested components with `[data-component="ViewsTheme:…"]` (component identity), not ad-hoc hooks.
 
@@ -234,6 +234,8 @@ Do **not** use `index.js` / `index.html.twig` naming for components (import-map 
 | Shipping calculation field | `ViewsTheme:Shipping:Calculation:Field` | `Shipping/Calculation/Field.js` — `shipping/store.js` only |
 | Delivery date | `ViewsTheme:Checkout:DeliveryDateSelection` | `Checkout/DeliveryDateSelection.js` |
 | Variants grid | `ViewsTheme:VariantsGrid:Container` | `VariantsGrid/Container.js` |
+| Variants grid filter / reset | `ViewsTheme:VariantsGrid:Filter` / `Filter:Reset` | `VariantsGrid/Filter.js`, `VariantsGrid/Filter/Reset.js` (identity; Filter owns the click) |
+| Variants grid empty state | `ViewsTheme:VariantsGrid:Empty` | `VariantsGrid/Empty.js` (identity; Container toggles `hidden`) |
 | Search action | `ViewsTheme:Search:Action` | `Search/Action.js` |
 | Search overlay | `ViewsTheme:Search:Overlay` | `Search/Overlay.js` |
 | Close button (drawer, modal, search overlay) | `ViewsTheme:Close` | `Close.js` |
@@ -304,6 +306,9 @@ Data: `page.extensions.viewsTheme.variantsGrid`.
 | Hook | Attribute |
 |------|-----------|
 | Grid container | `data-component="ViewsTheme:VariantsGrid:Container"` |
+| Variant filter | `data-component="ViewsTheme:VariantsGrid:Filter"` (emits `ViewsTheme:VariantsGrid:Filter:Change`) |
+| Filter reset | `data-component="ViewsTheme:VariantsGrid:Filter:Reset"` |
+| Empty state | `data-component="ViewsTheme:VariantsGrid:Empty"` |
 | Quantity input | `data-component="ViewsTheme:QuantityInput"` |
 | Pagination slot | `data-action="pagination"` (legacy) |
 | Quantity memory | `data-action="memory"` (legacy) |

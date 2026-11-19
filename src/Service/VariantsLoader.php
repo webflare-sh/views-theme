@@ -6,7 +6,11 @@ namespace Webflare\ViewsTheme\Service;
 
 use Shopware\Core\Content\Property\Aggregate\PropertyGroupOption\PropertyGroupOptionCollection;
 use Shopware\Core\Content\Property\PropertyGroupCollection;
+use Shopware\Core\Framework\DataAbstractionLayer\EntityRepository;
+use Shopware\Core\Framework\DataAbstractionLayer\Search\Aggregation\Bucket\TermsAggregation;
+use Shopware\Core\Framework\DataAbstractionLayer\Search\AggregationResult\Bucket\TermsResult;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria;
+use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsAnyFilter;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsFilter;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Sorting\FieldSorting;
 use Shopware\Core\Content\Product\SalesChannel\SalesChannelProductCollection;
@@ -17,18 +21,23 @@ class VariantsLoader
 {
     /**
      * @param SalesChannelRepository<SalesChannelProductCollection> $productRepository
+     * @param EntityRepository<PropertyGroupOptionCollection> $optionRepository
      */
     public function __construct(
         private readonly SalesChannelRepository $productRepository,
+        private readonly EntityRepository $optionRepository,
     ) {
     }
 
+    /**
+     * @param list<list<string>> $optionIdsByGroup
+     */
     public function countVariantsByParentId(
         string $parentId,
         SalesChannelContext $context,
+        array $optionIdsByGroup = [],
     ): int {
-        $criteria = (new Criteria())
-            ->addFilter(new EqualsFilter('parentId', $parentId))
+        $criteria = $this->createParentCriteria($parentId, $optionIdsByGroup)
             ->setLimit(1)
             ->setTotalCountMode(Criteria::TOTAL_COUNT_MODE_EXACT);
 
@@ -39,13 +48,22 @@ class VariantsLoader
         return $result->getTotal();
     }
 
+    /**
+     * @param list<list<string>> $optionIdsByGroup
+     */
     public function loadVariantsPageByParentId(
         string $parentId,
         int $offset,
         int $limit,
         SalesChannelContext $context,
+        array $optionIdsByGroup = [],
     ): SalesChannelProductCollection {
-        $criteria = $this->createVariantCriteria($parentId)
+        $criteria = $this->createParentCriteria($parentId, $optionIdsByGroup)
+            ->addAssociation('options.group')
+            ->addAssociation('options.media')
+            ->addAssociation('cover')
+            ->addAssociation('calculatedPrices')
+            ->addSorting(new FieldSorting('productNumber', FieldSorting::ASCENDING))
             ->setOffset($offset)
             ->setLimit($limit);
 
@@ -59,53 +77,51 @@ class VariantsLoader
         return $variants;
     }
 
-    private function createVariantCriteria(string $parentId): Criteria
-    {
-        return (new Criteria())
-            ->addFilter(new EqualsFilter('parentId', $parentId))
-            ->addAssociation('options.group')
-            ->addAssociation('options.media')
-            ->addAssociation('cover')
-            ->addAssociation('calculatedPrices')
-            ->addSorting(new FieldSorting('productNumber', FieldSorting::ASCENDING));
-    }
+    public function loadOptionGroupsByParentId(
+        string $parentId,
+        SalesChannelContext $context,
+    ): PropertyGroupCollection {
+        $criteria = $this->createParentCriteria($parentId, [])
+            ->setLimit(1)
+            ->addAggregation(new TermsAggregation('options', 'product.options.id'));
 
-    public function extractConfiguratorGroups(SalesChannelProductCollection $variants): PropertyGroupCollection
-    {
-        $groups = [];
+        $criteria->setTitle('views-theme::variants-grid-option-ids');
 
-        foreach ($variants as $variant) {
-            $options = $variant->getOptions();
-            if ($options === null) {
-                continue;
-            }
+        $aggregation = $this->productRepository->aggregate($criteria, $context)->get('options');
+        $optionIds = $aggregation instanceof TermsResult ? array_values(array_filter($aggregation->getKeys())) : [];
 
-            foreach ($options as $option) {
-                $group = $option->getGroup();
-                if ($group === null) {
-                    continue;
-                }
-
-                $groupId = $group->getId();
-                if (!isset($groups[$groupId])) {
-                    $groups[$groupId] = $group;
-                }
-
-                $existingOptions = $groups[$groupId]->getOptions();
-                if ($existingOptions === null) {
-                    $existingOptions = new PropertyGroupOptionCollection();
-                    $groups[$groupId]->setOptions($existingOptions);
-                }
-
-                if (!$existingOptions->has($option->getId())) {
-                    $existingOptions->add($option);
-                }
-            }
+        if ($optionIds === []) {
+            return new PropertyGroupCollection();
         }
 
-        $collection = new PropertyGroupCollection($groups);
-        $collection->sortByPositions();
+        $optionCriteria = (new Criteria($optionIds))
+            ->addAssociation('group')
+            ->addAssociation('media');
 
-        return $collection;
+        $optionCriteria->setTitle('views-theme::variants-grid-options');
+
+        $groups = $this->optionRepository
+            ->search($optionCriteria, $context->getContext())
+            ->getEntities()
+            ->groupByPropertyGroups();
+
+        $groups->sortByPositions();
+        $groups->sortByConfig($context->getLanguageInfo()->localeCode);
+
+        return $groups;
+    }
+
+    /**
+     * @param list<list<string>> $optionIdsByGroup
+     */
+    private function createParentCriteria(string $parentId, array $optionIdsByGroup): Criteria
+    {
+        $criteria = (new Criteria())->addFilter(new EqualsFilter('parentId', $parentId));
+
+        foreach ($optionIdsByGroup as $optionIds) {
+            $criteria->addFilter(new EqualsAnyFilter('optionIds', $optionIds));
+        }
+
+        return $criteria;
     }
 }

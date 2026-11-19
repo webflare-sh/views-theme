@@ -125,7 +125,7 @@ Product:BuyContainer (class VM)
 |-------|--------|
 | `rootElementClass` | `product-detail-buy` or `product-detail-buy-{elementId}` |
 | `productActive` | `product.active` |
-| `useVariantsGrid` | config `variantsGridActive` ∧ grid has variants |
+| `useVariantsGrid` | config `variantsGridActive` ∧ `variantsGrid` is a `VariantsGrid` struct (attached only when the product has visible variants) |
 | `showBuyFormBlock` | active ∧ available ∧ `calculatedMaxPurchase > 0` ∧ `showBuyForm` ∧ not variants grid |
 | `showUnavailableBlock` | active ∧ `showBuyForm` ∧ not variants grid ∧ not (available ∧ `calculatedMaxPurchase > 0`). Mounts `Product:Action:Unavailable` instead of the buy form |
 | `showConfiguratorBlock` | `showConfigurator` ∧ parent ∧ settings ∧ not grid |
@@ -221,7 +221,7 @@ Nests: `rating` (`Review:Rating`), `label`. Override via `header:rating:…`.
 
 ## Variants grid
 
-When `ViewsTheme.config.variantsGridActive` and `variantsGrid.variants` is non-empty:
+When `ViewsTheme.config.variantsGridActive` and `variantsGrid` is attached (a variant filter may leave the current page without rows; the grid stays mounted):
 
 1. `Product:Configurator` is **not** mounted
 2. Single `Product:Action:Buy` is **not** mounted

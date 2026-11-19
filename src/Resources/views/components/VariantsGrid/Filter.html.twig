@@ -1,0 +1,60 @@
+{% props
+    groups = [],
+    selectedOptionIds = [],
+    id = 'vi-variants-grid-filter-' ~ random(),
+    cva = {},
+%}
+
+{% do vi_define_cva(cva) %}
+{% do vi_define_attrs(['group', 'collapse', 'options', 'reset']) %}
+
+<div
+    {{ attributes.defaults({
+        'data-component': 'ViewsTheme:VariantsGrid:Filter',
+        role: 'group',
+        'aria-label': 'variantsGrid.filter.label'|trans|striptags,
+    }) }}
+    class="{{ vi_class('root') }}"
+>
+    {% for group in groups %}
+        {% set groupBodyId = id ~ '-' ~ group.id %}
+        {% set selectedCount = group.options|filter(option => option.id in selectedOptionIds)|length %}
+
+        {% block group %}
+            <twig:ViewsTheme:Filter:Group
+                class="{{ vi_class('group') }}"
+                {{ ...vi_attrs('group').defaults({
+                    id: groupBodyId,
+                    label: group.translated.name,
+                    count: selectedCount > 0 ? selectedCount : null,
+                }).all() }}
+            >
+                <twig:ViewsTheme:Filter:Group:Collapse
+                    class="{{ vi_class('collapse') }}"
+                    {{ ...vi_attrs('collapse').defaults({
+                        id: groupBodyId,
+                    }).all() }}
+                >
+                    <twig:ViewsTheme:Filter:MultiSelect:Options
+                        class="{{ vi_class('options') }}"
+                        {{ ...vi_attrs('options').defaults({
+                            displayName: group.translated.name,
+                            elements: group.options,
+                            selectedIds: selectedOptionIds,
+                            filterKey: group.id,
+                        }).all() }}
+                    />
+                </twig:ViewsTheme:Filter:Group:Collapse>
+            </twig:ViewsTheme:Filter:Group>
+        {% endblock %}
+    {% endfor %}
+
+    {% block reset %}
+        <twig:ViewsTheme:VariantsGrid:Filter:Reset
+            class="{{ vi_class('reset') }}"
+            {{ ...vi_attrs('reset').defaults({
+                hidden: selectedOptionIds is empty,
+            }).all() }}
+        />
+    {% endblock %}
+</div>

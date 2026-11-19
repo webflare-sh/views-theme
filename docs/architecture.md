@@ -72,7 +72,8 @@ src/
 | `SalesChannelContextAccessor` | Request-stack SCC for class components |
 | `ProductReviewGateway` | Review load for XHR / CMS |
 | `ReviewPointsNormalizer` | Normalize `points` query shapes |
-| `VariantsLoader` | Variants grid data for PDP extension |
+| `VariantsLoader` | Variants grid DAL reads: filtered count / page, option groups of all visible variants |
+| `VariantsGridLoader` | Variants grid state from the request (page, option filter) for the PDP extension and the load XHR |
 | `ProductDetailUrlBuilder` | Listing / PDP product URLs |
 | `ProductPriceResolver` | Price view-model DTO |
 | `ShippingMethodPriceResolver` | Confirm shipping quotes: cart delivery total when present, otherwise `DeliveryCalculator` on a scratch cart |
@@ -87,6 +88,7 @@ src/
 | `FilterFacet` | Facet DTO for filters |
 | `ConfiguratorOptionFace` | Option label kind (`text`, `color`, `media`) plus name, hex, and media |
 | `ProductPriceData` | Price view-model |
+| `VariantsGrid` | Variants grid payload (`page.extensions.viewsTheme.variantsGrid`): rows, option groups, pagination, selected option ids |
 | `VariantsGridPagination` | Variants grid pagination state |
 | `CookieGroupView` / `CookieEntryView` | Cookie manager group / switch view-models |
 

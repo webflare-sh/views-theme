@@ -1,6 +1,7 @@
 {% props
     pagination,
     pageParameter = 'variantsPage',
+    query = {},
 %}
 
 {% if pagination.total > pagination.limit %}
@@ -8,6 +9,7 @@
         :currentPage="pagination.page"
         :totalPages="(pagination.total / (pagination.limit ?: 1))|round(0, 'ceil')"
         :pageParameter="pageParameter"
+        :query="query"
         location="variants-grid"
     />
 {% endif %}

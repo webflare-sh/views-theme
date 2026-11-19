@@ -30,6 +30,10 @@ Theme-owned listing filters. Core filter plugins / `data-filter-*` / OffCanvasFi
 | `Product:Listing` | Executor for the listing store: control registry, apply/history, commits `labels` / `params` / `busy`. URL is the shareable selection. Drawer calls `syncControls` then `syncFilterOptions` on the store |
 | Controller | `FilterDrawerController` — `/vi/filter/drawer/…` HTML |
 
+### Reuse outside the listing
+
+`Filter:Group`, `Filter:Group:Toggle` / `Count` / `Collapse`, `Filter:MultiSelect:Options` and `Filter:Chip` do not touch the listing store, so other owners can compose them ([variants grid filter](variants-grid.md#variant-filter)). `Filter:MultiSelect`, `Filter:Reset` and `Filter:Group:Footer` dispatch to the listing store and stay listing-only. Keep that split when changing these components.
+
 ## Facet resolution (server)
 
 `Filter:Panel.php` `#[PostMount]` uses `FilterFacetPipeline::resolveWithAvailability(...)` → `list<FilterFacet>`.

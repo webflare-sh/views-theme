@@ -94,8 +94,7 @@
         <service id="Webflare\ViewsTheme\Controller\VariantsGridController" public="true">
             <argument type="service" id="Shopware\Core\Checkout\Cart\SalesChannel\CartService"/>
             <argument type="service" id="Shopware\Core\Checkout\Cart\LineItemFactoryRegistry"/>
-            <argument type="service" id="Webflare\ViewsTheme\Service\VariantsLoader"/>
-            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="Webflare\ViewsTheme\Service\VariantsGridLoader"/>
             <argument type="service" id="twig"/>
             <call method="setContainer">
                 <argument type="service" id="service_container"/>
@@ -168,6 +167,12 @@
 
         <service id="Webflare\ViewsTheme\Service\VariantsLoader">
             <argument type="service" id="sales_channel.product.repository"/>
+            <argument type="service" id="property_group_option.repository"/>
+        </service>
+
+        <service id="Webflare\ViewsTheme\Service\VariantsGridLoader">
+            <argument type="service" id="Webflare\ViewsTheme\Service\VariantsLoader"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
         </service>
 
         <service id="Webflare\ViewsTheme\Service\ProductDetailUrlBuilder">
@@ -237,9 +242,8 @@
         </service>
 
         <service id="Webflare\ViewsTheme\Subscriber\ProductPageSubscriber">
-            <argument type="service" id="Webflare\ViewsTheme\Service\VariantsLoader"/>
+            <argument type="service" id="Webflare\ViewsTheme\Service\VariantsGridLoader"/>
             <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
-            <argument type="service" id="request_stack"/>
             <tag name="kernel.event_subscriber"/>
         </service>
 

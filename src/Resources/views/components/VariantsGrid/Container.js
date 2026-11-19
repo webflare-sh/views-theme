@@ -1,3 +1,5 @@
+import { getInstanceByElement } from '@views-theme/modules/shared/component.js'
+
 /**
  * @extends {ShopwareComponent}
  */
@@ -10,6 +12,11 @@ export default class VariantsGridContainer extends ShopwareComponent {
         memorySelector: '[data-action="memory"]',
         errorSelector: '[role="alert"]',
         liveRegionSelector: '[aria-live]',
+        filterComponent: 'ViewsTheme:VariantsGrid:Filter',
+        emptyComponent: 'ViewsTheme:VariantsGrid:Empty',
+        filterChangeEvent: 'ViewsTheme:VariantsGrid:Filter:Change',
+        pageParameter: 'variantsPage',
+        optionsParameter: 'variantsOptions',
         addEvent: 'ViewsTheme:Cart:Add',
     };
 
@@ -20,12 +27,20 @@ export default class VariantsGridContainer extends ShopwareComponent {
         this._memory = this.el.querySelector(this.options.memorySelector);
         this._error = this.el.querySelector(this.options.errorSelector);
         this._liveRegion = this.el.querySelector(this.options.liveRegionSelector);
+        this._filter = this.el.querySelector(`[data-component="${this.options.filterComponent}"]`);
+        this._empty = this.el.querySelector(`[data-component="${this.options.emptyComponent}"]`);
         this._loadUrl = this.el.getAttribute('data-load-url');
         this._parentId = this.el.getAttribute('data-parent-id');
         this._quantityMap = new Map();
+        this._loadController = null;
+
+        const { page, optionIds } = this._getStateFromUrl(window.location.href);
+        this._page = page;
+        this._optionIds = optionIds;
 
         this._onInputChange = this._onInputChange.bind(this);
         this._onPaginationClick = this._onPaginationClick.bind(this);
+        this._onFilterChange = this._onFilterChange.bind(this);
         this._onSubmit = this._onSubmit.bind(this);
         this._onPopState = this._onPopState.bind(this);
 
@@ -43,7 +58,9 @@ export default class VariantsGridContainer extends ShopwareComponent {
         if (this._form) {
             this._form.removeEventListener('submit', this._onSubmit, true);
         }
+        window.Shopware.off(this.options.filterChangeEvent, this._onFilterChange);
         window.removeEventListener('popstate', this._onPopState);
+        this._loadController?.abort();
     }
 
     _registerEvents() {
@@ -59,6 +76,7 @@ export default class VariantsGridContainer extends ShopwareComponent {
             this._form.addEventListener('submit', this._onSubmit, true);
         }
 
+        window.Shopware.on(this.options.filterChangeEvent, this._onFilterChange);
         window.addEventListener('popstate', this._onPopState);
     }
 
@@ -77,48 +95,72 @@ export default class VariantsGridContainer extends ShopwareComponent {
     }
 
     _onPaginationClick(event) {
-        const link = event.target.closest('a[href*="variantsPage="]');
+        const link = event.target.closest('a[href]');
         if (!link || !this._pagination || !this._pagination.contains(link)) {
             return;
         }
 
-        const page = this._getPageFromUrl(link.href);
-        if (page === null || page === this._getCurrentPage() || link.getAttribute('aria-disabled') === 'true') {
-            event.preventDefault();
+        const { page } = this._getStateFromUrl(link.href);
+        event.preventDefault();
+
+        if (page === this._page || link.getAttribute('aria-disabled') === 'true') {
             return;
         }
 
-        event.preventDefault();
-
-        this._loadPage(page);
+        this._loadPage(page, this._optionIds, { focus: true });
     }
 
-    _getCurrentPage() {
-        return this._getPageFromUrl(window.location.href) || 1;
+    /**
+     * @param {{ source?: Element, optionIds?: string[] }} payload
+     */
+    _onFilterChange(payload) {
+        if (!this._filter || payload?.source !== this._filter) {
+            return;
+        }
+
+        this._loadPage(1, payload.optionIds || []);
     }
 
-    _getPageFromUrl(urlString) {
-        const url = new URL(urlString, window.location.origin);
-        const page = url.searchParams.get('variantsPage');
+    /**
+     * @param {string} urlString
+     * @returns {{ page: number, optionIds: string[] }}
+     */
+    _getStateFromUrl(urlString) {
+        const params = new URL(urlString, window.location.origin).searchParams;
+        const page = parseInt(params.get(this.options.pageParameter) || '', 10);
+        const optionIds = (params.get(this.options.optionsParameter) || '').split('|').filter(Boolean);
 
-        return page ? parseInt(page, 10) : null;
+        return { page: page > 0 ? page : 1, optionIds };
     }
 
-    async _loadPage(page) {
+    /**
+     * @param {number} page
+     * @param {string[]} optionIds
+     * @param {{ history?: boolean, focus?: boolean }} [behavior]
+     */
+    async _loadPage(page, optionIds, { history = true, focus = false } = {}) {
         if (!this._loadUrl || !this._gridBody || page < 1) {
             return;
         }
 
+        this._loadController?.abort();
+        const controller = new AbortController();
+        this._loadController = controller;
+
         this._hideError();
-        this.el.classList.add('is-loading');
+        this._setLoading(true);
 
         try {
             const url = new URL(this._loadUrl, window.location.origin);
             url.searchParams.set('parentId', this._parentId);
-            url.searchParams.set('variantsPage', String(page));
+            url.searchParams.set(this.options.pageParameter, String(page));
+            if (optionIds.length > 0) {
+                url.searchParams.set(this.options.optionsParameter, optionIds.join('|'));
+            }
 
             const response = await fetch(url.toString(), {
                 headers: { 'X-Requested-With': 'XMLHttpRequest' },
+                signal: controller.signal,
             });
 
             if (!response.ok) {
@@ -126,6 +168,7 @@ export default class VariantsGridContainer extends ShopwareComponent {
             }
 
             const data = await response.json();
+            const filterChanged = !this._isSameSelection(optionIds, this._optionIds);
 
             this._gridBody.innerHTML = data.rows || '';
 
@@ -133,17 +176,60 @@ export default class VariantsGridContainer extends ShopwareComponent {
                 this._pagination.innerHTML = data.pagination;
             }
 
+            if (this._empty) {
+                this._empty.hidden = data.total > 0;
+            }
+
+            this._page = data.page || page;
+            this._optionIds = optionIds;
+
             this._applyQuantitiesFromMap();
             this._reinitializePlugins();
-            this._updateUrl(page);
-            this._setFocusToGridBody();
-            this._announcePageLoaded(page);
+
+            if (history) {
+                this._updateUrl();
+            }
+
+            if (focus) {
+                this._setFocusToGridBody();
+            }
+
+            if (filterChanged) {
+                this._announceResults(data.total || 0);
+            } else {
+                this._announcePageLoaded(this._page);
+            }
         } catch (error) {
+            if (controller.signal.aborted) {
+                return;
+            }
+
             this._showError();
             console.error('VariantsGrid: Failed to load page', error);
         } finally {
-            this.el.classList.remove('is-loading');
+            if (this._loadController === controller) {
+                this._loadController = null;
+                this._setLoading(false);
+            }
         }
+    }
+
+    /**
+     * @param {boolean} loading
+     */
+    _setLoading(loading) {
+        const target = this._form || this.el;
+
+        target.classList.toggle('is-loading', loading);
+        target.setAttribute('aria-busy', loading ? 'true' : 'false');
+    }
+
+    /**
+     * @param {string[]} a
+     * @param {string[]} b
+     */
+    _isSameSelection(a, b) {
+        return a.length === b.length && a.every((id) => b.includes(id));
     }
 
     _applyQuantitiesFromMap() {
@@ -237,19 +323,35 @@ export default class VariantsGridContainer extends ShopwareComponent {
         `;
     }
 
-    _updateUrl(page) {
+    _updateUrl() {
         const url = new URL(window.location.href);
-        url.searchParams.set('variantsPage', String(page));
-        window.history.pushState({ variantsPage: page }, '', url.toString());
+        url.searchParams.set(this.options.pageParameter, String(this._page));
+
+        if (this._optionIds.length > 0) {
+            url.searchParams.set(this.options.optionsParameter, this._optionIds.join('|'));
+        } else {
+            url.searchParams.delete(this.options.optionsParameter);
+        }
+
+        window.history.pushState(
+            {
+                [this.options.pageParameter]: this._page,
+                [this.options.optionsParameter]: this._optionIds,
+            },
+            '',
+            url.toString(),
+        );
     }
 
     _onPopState() {
-        const url = new URL(window.location.href);
-        const page = url.searchParams.get('variantsPage');
+        const { page, optionIds } = this._getStateFromUrl(window.location.href);
 
-        if (page) {
-            this._loadPage(parseInt(page, 10));
+        if (page === this._page && this._isSameSelection(optionIds, this._optionIds)) {
+            return;
         }
+
+        getInstanceByElement(this.options.filterComponent, this._filter)?.setValues(optionIds);
+        this._loadPage(page, optionIds, { history: false });
     }
 
     _reinitializePlugins() {
@@ -274,6 +376,15 @@ export default class VariantsGridContainer extends ShopwareComponent {
 
         const template = this._liveRegion.getAttribute('data-page-loaded-template') || 'Page %page% loaded';
         this._liveRegion.textContent = template.replace('%page%', String(page));
+    }
+
+    _announceResults(total) {
+        if (!this._liveRegion) {
+            return;
+        }
+
+        const template = this._liveRegion.getAttribute('data-results-template') || 'Variants found: %total%';
+        this._liveRegion.textContent = template.replace('%total%', String(total));
     }
 
     _showError() {
