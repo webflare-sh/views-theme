@@ -8,7 +8,23 @@
         "label": "Typografie"
       },
       "media": {
-        "label": "Medien"
+        "label": "Medien",
+        "default": {
+          "default": {
+            "logo-width-mobile": {
+              "label": "Logo-Breite mobil (px)",
+              "helpText": "Breite des Header-Logos unter Tablet."
+            },
+            "logo-width-tablet": {
+              "label": "Logo-Breite Tablet (px)",
+              "helpText": "Breite des Header-Logos ab Tablet."
+            },
+            "logo-width-desktop": {
+              "label": "Logo-Breite Desktop (px)",
+              "helpText": "Breite des Header-Logos ab Desktop."
+            }
+          }
+        }
       }
     }
   },

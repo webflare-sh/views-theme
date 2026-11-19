@@ -6,6 +6,7 @@
 
 **Changelog**
 - Das Hinzufügen von Produkten aus dem Varianten-Grid auf der Produktseite funktioniert wieder: Die gewählten Varianten landen im Warenkorb und der Warenkorb-Drawer öffnet sich (#178)
+- Beschriftungen und Hilfetexte der Theme-Einstellungen kommen jetzt aus Administrations-Snippets statt aus Inline-Übersetzungen in der `theme.json`, die Shopware 6.7 als veraltet markiert. Auf Deutsch und Englisch lauten sie wie bisher (#156)
 
 # 2.0.0
 

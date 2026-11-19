@@ -6,6 +6,7 @@
 
 **Changelog**
 - Adding products from the variants grid on the product page works again: the selected variants are added to the cart and the cart drawer opens (#178)
+- The labels and help texts of the theme settings now come from Administration snippets instead of inline translations in `theme.json`, which Shopware 6.7 deprecates. They read the same in English and German (#156)
 
 # 2.0.0
 

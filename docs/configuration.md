@@ -197,7 +197,7 @@ Brand colors, spacing, and theme-field colors are Shopware / Bootstrap custom pr
 
 ### Theme fields (admin)
 
-Views fields sit on their own theme-manager tabs. Storefront defaults stay on **General** (`tab` omitted). Each Views field uses `block: "default"` so the tab has no extra card title. Tab labels: admin snippets `sw-theme.ViewsTheme.{tab}.label`, with `config.tabs` in `theme.json` as the fallback (en-GB / de-DE).
+Views fields sit on their own theme-manager tabs. Storefront defaults stay on **General** (`tab` omitted). Each Views field uses `block: "default"` so the tab has no extra card title. Labels and help texts live only in the admin snippets (`src/Resources/app/administration/src/snippet/{en-GB,de-DE}.json`), loaded at runtime without an admin build: tab labels under `sw-theme.ViewsTheme.{tab}.label`, field labels and help texts under `sw-theme.ViewsTheme.{tab}.{block}.{section}.{field}.label` / `.helpText` (block and section are `default`). `theme.json` has no `config.tabs` and no inline `label` / `helpText`: Shopware 6.7 deprecates inline translations and drops them in 6.8. A new field with a label adds both snippet keys in EN and DE.
 
 | Tab | Field | Type | Default / notes |
 |-----|-------|------|-----------------|

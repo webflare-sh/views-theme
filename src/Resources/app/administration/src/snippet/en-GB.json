@@ -8,7 +8,23 @@
         "label": "Typography"
       },
       "media": {
-        "label": "Media"
+        "label": "Media",
+        "default": {
+          "default": {
+            "logo-width-mobile": {
+              "label": "Logo width mobile (px)",
+              "helpText": "Header logo width below Tablet."
+            },
+            "logo-width-tablet": {
+              "label": "Logo width tablet (px)",
+              "helpText": "Header logo width from Tablet."
+            },
+            "logo-width-desktop": {
+              "label": "Logo width desktop (px)",
+              "helpText": "Header logo width from Desktop."
+            }
+          }
+        }
       }
     }
   },
