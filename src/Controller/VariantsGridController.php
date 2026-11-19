@@ -142,10 +142,20 @@ class VariantsGridController extends StorefrontController
             ]);
         }
 
-        $paginationHtml = $this->renderView($paginationTemplate, [
+        $paginationProps = [
             'pagination' => new VariantsGridPagination($page, $limit, $total),
             'pageParameter' => self::PAGE_PARAMETER,
-        ]);
+        ];
+
+        // The default template is an anonymous UX component (`{% props %}`), so it must render as a component
+        if ($paginationTemplate === self::DEFAULT_PAGINATION_TEMPLATE) {
+            $paginationHtml = $this->twig->createTemplate('{{- component(name, props) -}}')->render([
+                'name' => 'ViewsTheme:VariantsGrid:Pagination',
+                'props' => $paginationProps,
+            ]);
+        } else {
+            $paginationHtml = $this->renderView($paginationTemplate, $paginationProps);
+        }
 
         return new JsonResponse([
             'rows' => $rowsHtml,
