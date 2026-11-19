@@ -4,8 +4,6 @@ import { fetchJson, urlWithParams } from '@views-theme/modules/shared/http.js'
 const FOCUS_KEY = 'variant-switch'
 
 /**
- * Product configurator owner. Reads the store snapshot and calls the Shopware switch API.
- *
  * @extends {ShopwareComponent}
  */
 export default class ProductConfigurator extends ShopwareComponent {

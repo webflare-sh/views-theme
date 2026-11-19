@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace Webflare\ViewsTheme\Service;
 
-/**
- * UX component names for filter facets (SoT for resolver / applier / payload builder).
- */
 final class FilterComponents
 {
     public const MULTI_SELECT = 'ViewsTheme:Filter:MultiSelect';

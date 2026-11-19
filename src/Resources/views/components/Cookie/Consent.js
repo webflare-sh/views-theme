@@ -2,9 +2,6 @@ import { getInstanceByElement } from '@views-theme/modules/lazy-shell.js'
 import { setCookie } from '@views-theme/modules/cookie/storage.js'
 
 /**
- * Request for one feature cookie (e.g. `wishlist-enabled`): accept it, sign in instead, cancel, or
- * open the full cookie manager. Body of the cookie drawer, opened by `Cookie:Manager:Action`.
- *
  * @extends {ShopwareComponent}
  */
 export default class CookieConsent extends ShopwareComponent {
@@ -13,7 +10,6 @@ export default class CookieConsent extends ShopwareComponent {
         loginUrl: null,
         expirationDays: 30,
         drawerComponentName: 'ViewsTheme:Drawer',
-        /** Handled by `Cookie:Bar`, which opens the manager through its own Action */
         managerRequestEvent: 'ViewsTheme:Cookie:Manager:Request',
     }
 
@@ -48,7 +44,6 @@ export default class CookieConsent extends ShopwareComponent {
                 this._closeDrawer()
                 break
             case 'preferences':
-                // The manager replaces this drawer.
                 window.Shopware.emit(this.options.managerRequestEvent)
                 break
         }

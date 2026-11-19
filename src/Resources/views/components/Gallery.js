@@ -5,10 +5,6 @@ import {
 } from '@views-theme/modules/shared/component.js'
 
 /**
- * PDP gallery owner — syncs thumbs, dots, controls, and the canvas Carousel.
- * Index SoT lives here; chrome follows ARIA / disabled attrs. The canvas
- * Carousel scrolls (`goTo`) and reports user swipes (`carouselChangeEvent`).
- *
  * @extends {ShopwareComponent}
  */
 export default class Gallery extends ShopwareComponent {
@@ -212,9 +208,6 @@ export default class Gallery extends ShopwareComponent {
         }
     }
 
-    /**
-     * Pause every slide video that is not the active index.
-     */
     _pauseInactiveVideos() {
         const active = this._index
         for (const slide of this._slides()) {
@@ -228,9 +221,6 @@ export default class Gallery extends ShopwareComponent {
         }
     }
 
-    /**
-     * Pause all gallery videos (destroy / leave).
-     */
     _pauseVideos() {
         for (const video of this.el.querySelectorAll('video')) {
             video.pause()

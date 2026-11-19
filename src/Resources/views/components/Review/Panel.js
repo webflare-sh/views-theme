@@ -15,8 +15,6 @@ const RESULTS_CONTROL_NAMES = [
 ]
 
 /**
- * Review panel owner: URL SoT, list island XHR, save.
- *
  * @extends {ShopwareComponent}
  */
 export default class ReviewPanel extends ShopwareComponent {

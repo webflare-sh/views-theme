@@ -1,9 +1,6 @@
 import { getInstanceByElement } from '@views-theme/modules/shared/component.js'
 
 /**
- * Review form region — write/edit submit via Panel.save after Form:Handler validates.
- * Guest Account:Login submits natively (not intercepted).
- *
  * @extends {ShopwareComponent}
  */
 export default class ReviewForm extends ShopwareComponent {

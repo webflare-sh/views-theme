@@ -1,8 +1,6 @@
 import { applyReview } from '@views-theme/modules/review/apply.js'
 
 /**
- * Review language filter control (URL SoT key: language).
- *
  * @extends {ShopwareComponent}
  */
 export default class ReviewLanguage extends ShopwareComponent {

@@ -1,9 +1,4 @@
 /**
- * Client sessions for product configurators.
- *
- * Group dispatches here. Product:Configurator is the only executor.
- * Sessions are keyed by configurator id so several CMS buy boxes can coexist.
- *
  * @module @views-theme/modules/configurator/store
  */
 

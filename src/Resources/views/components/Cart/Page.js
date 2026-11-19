@@ -6,8 +6,6 @@ import {
 import { parseHtmlFragment } from '@views-theme/modules/shared/dom.js'
 
 /**
- * Cart page owner: island refresh on Cart:Changed.
- *
  * @extends {ShopwareComponent}
  */
 export default class CartPage extends ShopwareComponent {
@@ -118,10 +116,6 @@ export default class CartPage extends ShopwareComponent {
         }
     }
 
-    /**
-     * Mounts the server-rendered error alert (Flashes `<template>`). The next successful
-     * refresh swaps Flashes and clears it.
-     */
     _showError() {
         const flashes = this.el.querySelector(`[data-component="${this.options.flashesComponent}"]`)
         const template = flashes?.querySelector(':scope > template')

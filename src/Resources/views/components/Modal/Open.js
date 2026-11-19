@@ -1,8 +1,6 @@
 import { getInstanceByElement } from '@views-theme/modules/shared/component.js'
 
 /**
- * Opens a Modal by id (or the closest Modal) via instance lookup.
- *
  * @extends {ShopwareComponent}
  */
 export default class ModalOpen extends ShopwareComponent {

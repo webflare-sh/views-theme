@@ -123,9 +123,6 @@ export default class FilterMultiSelect extends ShopwareComponent {
         }
     }
 
-    /**
-     * Fallback when filter-options batch is unavailable.
-     */
     applyAvailability(aggregations) {
         if (!aggregations || !this.options.name) {
             return

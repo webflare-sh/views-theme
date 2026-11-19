@@ -8,9 +8,6 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Form:Birthday — day / month / year option lists.
- */
 #[AsTwigComponent]
 class Birthday
 {

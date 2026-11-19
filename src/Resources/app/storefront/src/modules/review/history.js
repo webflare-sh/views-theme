@@ -1,6 +1,4 @@
 /**
- * Review history push / popstate helpers.
- *
  * @module @views-theme/modules/review/history
  */
 

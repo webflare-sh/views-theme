@@ -2,9 +2,6 @@ import { fetchText } from '@views-theme/modules/shared/http.js'
 import { parseHtmlFragment } from '@views-theme/modules/shared/dom.js'
 
 /**
- * Overview newsletter — checkbox change → XHR POST (replaces FormAutoSubmit). The widget route
- * answers with the re-rendered component, which replaces this root (new switch state + messages).
- *
  * @extends {ShopwareComponent}
  */
 export default class AccountNewsletter extends ShopwareComponent {

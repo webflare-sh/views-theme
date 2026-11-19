@@ -12,9 +12,6 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Address:Input:Country — country and state row, plus per-option address flags.
- */
 #[AsTwigComponent]
 class Country
 {

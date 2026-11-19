@@ -13,9 +13,6 @@ use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\FromMethod;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Cms:DescriptionReviews — CMS element shell; Tabs or Accordion chrome.
- */
 #[AsTwigComponent(template: new FromMethod('resolveTemplate'))]
 class DescriptionReviews
 {

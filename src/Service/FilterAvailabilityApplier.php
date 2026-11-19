@@ -12,10 +12,6 @@ use Shopware\Core\Framework\DataAbstractionLayer\Search\AggregationResult\Aggreg
 use Shopware\Core\Framework\DataAbstractionLayer\Search\AggregationResult\Metric\EntityResult;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\AggregationResult\Metric\MaxResult;
 
-/**
- * Merges reduced aggregations into catalog facets (disabled / allowedIds / selectedIds).
- * Mirrors MultiSelect/Boolean/Rating applyAvailability JS — empty facets stay visible disabled.
- */
 final class FilterAvailabilityApplier
 {
     /**
@@ -206,8 +202,6 @@ final class FilterAvailabilityApplier
     }
 
     /**
-     * Available (allowed or selected) first; preserve relative order within each bucket.
-     *
      * @param mixed $elements
      * @param list<string> $allowedIds
      * @param list<string> $selectedIds

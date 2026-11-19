@@ -13,9 +13,6 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Filter:Panel — catalog facets + SSR availability when disableEmptyFilter.
- */
 #[AsTwigComponent]
 class Panel
 {
@@ -25,9 +22,6 @@ class Panel
 
     public bool $showHeader = false;
 
-    /**
-     * Whether to render the active-filter chip row (`Filter:Active`).
-     */
     public bool $showActive = true;
 
     /**

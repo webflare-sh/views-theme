@@ -1,5 +1,3 @@
-/* Popover + CSS anchor (Dropdown-like). Sizes/motion via var(--token, fallback). */
-
 .vi-filter-group-toggle__caret {
   transition: transform var(--vi-duration, 150ms) ease;
 }

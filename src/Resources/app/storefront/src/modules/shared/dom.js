@@ -1,6 +1,4 @@
 /**
- * DOM parse / mount helpers.
- *
  * @module @views-theme/modules/shared/dom
  */
 
@@ -40,8 +38,6 @@ export function replaceMount(selector, html, appendTo = document.body) {
 }
 
 /**
- * Mount a fresh copy of a server-rendered `<template>` shell (static markup that ships with the page).
- *
  * @param {string} templateId `<template>` element id
  * @param {string} selector existing mount to remove first
  * @param {ParentNode} [appendTo]
@@ -85,8 +81,6 @@ export function unmountEl(el, selector) {
 }
 
 /**
- * Swap a nested `[data-component]` island inside root from an HTML string.
- *
  * @param {Element} root
  * @param {string} html
  * @param {string} componentName
@@ -96,9 +90,6 @@ export function replaceComponentIsland(root, html, componentName) {
 }
 
 /**
- * Swap a nested `[data-component]` island.
- * both → replace; existing only → remove; next only → append to target.
- *
  * @param {ParentNode} sourceRoot
  * @param {ParentNode} targetRoot
  * @param {string} componentName

@@ -1,6 +1,4 @@
 /**
- * Plain `document.cookie` helpers (parity with core `CookieStorageHelper`).
- *
  * Names reach these helpers from plugin config and request payloads, so writes refuse anything
  * that is not an RFC 6265 cookie-name token (a `;` would inject cookie attributes).
  *

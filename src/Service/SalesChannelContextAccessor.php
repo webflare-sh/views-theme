@@ -8,9 +8,6 @@ use Shopware\Core\PlatformRequest;
 use Shopware\Core\System\SalesChannel\SalesChannelContext;
 use Symfony\Component\HttpFoundation\RequestStack;
 
-/**
- * Resolves the current sales channel context from the request stack.
- */
 final class SalesChannelContextAccessor
 {
     public function __construct(

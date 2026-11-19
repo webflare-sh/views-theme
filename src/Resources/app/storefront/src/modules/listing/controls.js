@@ -1,6 +1,4 @@
 /**
- * Listing control registry (discover / hydrate / labels).
- *
  * @module @views-theme/modules/listing/controls
  */
 

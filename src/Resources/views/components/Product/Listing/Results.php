@@ -8,9 +8,6 @@ use Shopware\Core\Framework\DataAbstractionLayer\Search\EntitySearchResult;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Product:Listing:Results — XHR-swappable island (actions, items, pagination).
- */
 #[AsTwigComponent]
 class Results
 {

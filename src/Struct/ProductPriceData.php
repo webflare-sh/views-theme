@@ -7,9 +7,6 @@ namespace Webflare\ViewsTheme\Struct;
 use Shopware\Core\Checkout\Cart\Price\Struct\CalculatedPrice;
 use Shopware\Core\Checkout\Cart\Price\Struct\PriceCollection;
 
-/**
- * Resolved product price fields for UX view-models (Price, Badges, …).
- */
 final readonly class ProductPriceData
 {
     public function __construct(

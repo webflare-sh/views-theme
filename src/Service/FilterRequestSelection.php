@@ -6,9 +6,6 @@ namespace Webflare\ViewsTheme\Service;
 
 use Symfony\Component\HttpFoundation\Request;
 
-/**
- * Parses listing filter selection from the request query/body.
- */
 final class FilterRequestSelection
 {
     /**

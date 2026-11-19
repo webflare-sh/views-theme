@@ -9,9 +9,6 @@ use Shopware\Core\Content\Product\SalesChannel\Review\ProductReviewResult;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Review:Panel — reviews DTO + owner URLs; Twig composes.
- */
 #[AsTwigComponent]
 class Panel
 {
@@ -26,8 +23,6 @@ class Panel
     public mixed $formViolations = null;
 
     /**
-     * Prefill / resubmit values for Review:Form (plain scalars only).
-     *
      * @var array{points?: float|int, title?: string, content?: string, id?: ?string}|null
      */
     public ?array $formValues = null;

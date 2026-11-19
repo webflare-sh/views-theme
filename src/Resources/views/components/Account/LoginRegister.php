@@ -9,9 +9,6 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Account:LoginRegister — the shared login / register tabs (register page and checkout register): which tab is active and the ids/slugs that wire tabs to panels.
- */
 #[AsTwigComponent]
 class LoginRegister
 {
@@ -51,9 +48,6 @@ class LoginRegister
 
     public string $registerPanelId = 'vi-account-pane-register';
 
-    /**
-     * Register tab is active for a register round trip (violations / posted data) or `?{tabParam}=register`.
-     */
     public bool $registerActive = false;
 
     /**

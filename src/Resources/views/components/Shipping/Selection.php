@@ -16,9 +16,6 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Shipping:Selection — method rows, descriptions, and quoted totals.
- */
 #[AsTwigComponent]
 class Selection
 {

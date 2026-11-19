@@ -14,10 +14,6 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Checkout:Success:Header — heading, intro copy and keyed meta for Page:Title.
- * Template fills the description block and passes the grid class through.
- */
 #[AsTwigComponent]
 class Header
 {

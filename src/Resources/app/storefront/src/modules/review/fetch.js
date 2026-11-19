@@ -1,6 +1,4 @@
 /**
- * Review list / save XHR.
- *
  * @module @views-theme/modules/review/fetch
  */
 

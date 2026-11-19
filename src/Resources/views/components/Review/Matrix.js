@@ -1,8 +1,6 @@
 import { applyReview } from '@views-theme/modules/review/apply.js'
 
 /**
- * Review points filter control (URL SoT key: points).
- *
  * @extends {ShopwareComponent}
  */
 export default class ReviewMatrix extends ShopwareComponent {

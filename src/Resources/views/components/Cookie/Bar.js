@@ -2,26 +2,17 @@ import { getInstanceByElement } from '@views-theme/modules/lazy-shell.js'
 import { checkConfigurationHash, isPreferenceSet, submitConsent } from '@views-theme/modules/cookie/consent.js'
 
 /**
- * Cookie consent bar and global consent coordinator (mounted whenever cookie consent is enabled):
- * shows while no preference is stored, applies "deny" / "accept all", re-asks when the cookie
- * configuration changed or this language has no consent yet, and routes manager openers (core
- * cookie links, manager / consent requests) to the `Cookie:Manager:Action` inside the bar.
- *
  * @extends {ShopwareComponent}
  */
 export default class CookieBar extends ShopwareComponent {
     static options = {
         groupsUrl: null,
-        /** href of the core cookie link; clicks open the manager instead of navigating */
         linkHref: null,
-        /** Privacy page of the bar text; the bar does not steal focus there (core parity) */
         privacyUrl: null,
         actionComponent: 'ViewsTheme:Cookie:Manager:Action',
         managerOpenEvent: 'ViewsTheme:Cookie:Manager:Open',
         managerCloseEvent: 'ViewsTheme:Cookie:Manager:Close',
-        /** Open the cookie manager (e.g. "Cookie preferences" in the consent request) */
         managerRequestEvent: 'ViewsTheme:Cookie:Manager:Request',
-        /** `{ featureName, cookieName }` — a feature asks for its cookie (e.g. wishlist) */
         requestEvent: 'ViewsTheme:Cookie:Consent:Request',
         /** Core `document.$emitter` event `{ route, cookieName }` (core plugins, apps); namespaced for unsubscribe */
         coreRequestEvent: 'CookieConfiguration/requestConsent.ViewsThemeCookieBar',
@@ -48,7 +39,6 @@ export default class CookieBar extends ShopwareComponent {
 
         this.el.addEventListener('click', this._onClick)
         document.addEventListener('click', this._onLinkClick, true)
-        // External hooks (plugins, analytics) — the core DOM events.
         document.addEventListener('showCookieBar', this.show)
         document.addEventListener('hideCookieBar', this.hide)
         window.Shopware.on(this.options.managerOpenEvent, this._onManagerOpen)
@@ -98,10 +88,6 @@ export default class CookieBar extends ShopwareComponent {
     }
 
     /**
-     * Public API — open the cookie manager (or, with `{ consent }`, a feature cookie request) through
-     * the Action inside the bar. The bar is the single coordinator: other Actions (e.g. a footer
-     * "Cookie settings" button) only handle their own clicks.
-     *
      * @param {{ consent?: { featureName?: string, cookieName?: string } }} [options]
      */
     openManager(options = {}) {
@@ -116,10 +102,6 @@ export default class CookieBar extends ShopwareComponent {
         void action.open(options)
     }
 
-    /**
-     * Drop outdated consent (the cookie configuration changed) and ask again; also ask when the
-     * shared preference cookie comes from another language only.
-     */
     async _verifyConfiguration() {
         const outcome = await checkConfigurationHash(this.options.groupsUrl)
 
@@ -159,8 +141,6 @@ export default class CookieBar extends ShopwareComponent {
     }
 
     /**
-     * Links to the core cookie route open the manager (plain left-clicks only).
-     *
      * @param {MouseEvent} event
      */
     _onLinkClick(event) {

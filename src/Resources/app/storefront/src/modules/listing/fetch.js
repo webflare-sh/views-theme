@@ -1,6 +1,4 @@
 /**
- * Listing XHR (results HTML, filter-options, aggregations).
- *
  * @module @views-theme/modules/listing/fetch
  */
 

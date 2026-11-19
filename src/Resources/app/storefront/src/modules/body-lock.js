@@ -1,6 +1,4 @@
 /**
- * Ref-counted body scroll lock for stacked shells (Drawer + Search Overlay).
- *
  * @module @views-theme/modules/body-lock
  */
 

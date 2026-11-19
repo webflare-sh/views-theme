@@ -19,11 +19,6 @@ use Shopware\Storefront\Event\RouteRequest\OrderRouteRequestEvent;
 use Shopware\Storefront\Page\Account\Order\AccountOrderPageLoadedEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-/**
- * Order history filters (`status` = order state technical name, `period` = months back).
- * Applies them to the core order route criteria and hands the selection plus the available
- * states to `Account:Orders:Filter` as `page.extensions.viewsTheme.orderFilter`.
- */
 class AccountOrderPageSubscriber implements EventSubscriberInterface
 {
     public const STATUS_PARAM = 'status';

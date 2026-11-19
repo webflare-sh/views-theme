@@ -8,9 +8,6 @@ use Webflare\ViewsTheme\Struct\ProductPriceData;
 use Shopware\Core\Checkout\Cart\Price\Struct\CalculatedPrice;
 use Shopware\Core\Content\Product\SalesChannel\SalesChannelProductEntity;
 
-/**
- * Shared product price view-model math for Product:Price / Product:Badges.
- */
 final class ProductPriceResolver
 {
     public function resolve(SalesChannelProductEntity $product): ProductPriceData

@@ -1,6 +1,4 @@
 /**
- * Shared Review:Panel.apply entry for review controls.
- *
  * @module @views-theme/modules/review/apply
  */
 

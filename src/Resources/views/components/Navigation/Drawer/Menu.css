@@ -9,7 +9,6 @@
         overflow: hidden;
     }
 
-    /* Fill the scrollport CB (flex height above). */
     .vi-navigation-drawer-menu[data-direction] [data-level][data-state] {
         position: absolute;
         inset: 0;

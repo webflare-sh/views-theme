@@ -9,9 +9,6 @@ use Shopware\Core\Content\Product\SalesChannel\SalesChannelProductEntity;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Product:Action:Buy — quantity gates + pack unit; Twig only composes.
- */
 #[AsTwigComponent]
 class Buy
 {

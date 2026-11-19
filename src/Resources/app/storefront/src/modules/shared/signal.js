@@ -1,6 +1,4 @@
 /**
- * Minimal reactive value.
- *
  * `subscribe` does not replay the current value; it only notifies on change.
  *
  * @module @views-theme/modules/shared/signal

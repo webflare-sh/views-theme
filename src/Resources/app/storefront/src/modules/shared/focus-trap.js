@@ -1,6 +1,4 @@
 /**
- * Tab-cycle focus inside a dialog root.
- *
  * @module @views-theme/modules/shared/focus-trap
  */
 

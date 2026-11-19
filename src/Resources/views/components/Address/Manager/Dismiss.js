@@ -1,6 +1,4 @@
 /**
- * Footer close — Modal.close via callMethod.
- *
  * @extends {ShopwareComponent}
  */
 export default class AddressManagerDismiss extends ShopwareComponent {

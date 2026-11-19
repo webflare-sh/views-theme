@@ -1,7 +1,8 @@
 /**
- * Serial async queue with optional per-key coalesce (last write wins per key).
- *
  * @module @views-theme/modules/serial-queue
+ */
+
+/**
  * @template TJob
  */
 

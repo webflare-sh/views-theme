@@ -9,9 +9,6 @@ use Shopware\Core\Content\Product\SalesChannel\SalesChannelProductEntity;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Product:Badges — discount / topseller / new gates live here; Twig only composes.
- */
 #[AsTwigComponent]
 class Badges
 {

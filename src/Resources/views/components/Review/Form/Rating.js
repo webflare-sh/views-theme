@@ -1,6 +1,4 @@
 /**
- * Review form points picker — hidden input + data-points icons + hover preview.
- *
  * @extends {ShopwareComponent}
  */
 export default class ReviewFormRating extends ShopwareComponent {

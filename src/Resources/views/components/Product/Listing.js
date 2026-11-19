@@ -12,8 +12,6 @@ import {
 } from '@views-theme/modules/listing/results-dom.js'
 
 /**
- * Product listing owner: URL SoT, control registry, Results XHR, filter-options.
- *
  * @extends {ShopwareComponent}
  */
 export default class ProductListing extends ShopwareComponent {
@@ -87,19 +85,14 @@ export default class ProductListing extends ShopwareComponent {
         detach(this)
     }
 
-    /** Re-scan control components (e.g. after Filter:Drawer mount/unmount). */
     refreshControls() {
         this._registry.refresh()
     }
 
-    /** Hydrate every registered control from the current URL query. */
     hydrateFromUrl() {
         this._registry.hydrateFromUrl()
     }
 
-    /**
-     * Discover controls then hydrate from URL (lazy Filter:Drawer open, init, popstate).
-     */
     syncControls() {
         this.refreshControls()
         this.hydrateFromUrl()
@@ -108,8 +101,6 @@ export default class ProductListing extends ShopwareComponent {
     }
 
     /**
-     * Batch-refetch filter option lists (server order + disabled) and meta.
-     *
      * @param {Record<string, unknown>|import('@views-theme/modules/types.js').ListingRequestParams|null} [params]
      * @param {{ built?: boolean }} [options]
      * @returns {Promise<void>}
@@ -137,8 +128,6 @@ export default class ProductListing extends ShopwareComponent {
     }
 
     /**
-     * Fallback: reduced aggregations JSON → applyAvailability on controls.
-     *
      * @param {Record<string, unknown>|import('@views-theme/modules/types.js').ListingRequestParams|null} [params]
      * @param {{ built?: boolean }} [options]
      * @returns {Promise<void>}

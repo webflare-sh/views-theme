@@ -6,9 +6,6 @@ namespace Webflare\ViewsTheme\Resources\views\components\Product;
 
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 
-/**
- * View-model for Product:Prices — price stack inputs; Twig composes children.
- */
 #[AsTwigComponent]
 class Prices
 {

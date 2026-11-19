@@ -37,9 +37,6 @@ abstract class AbstractComponentController extends StorefrontController
         return $response;
     }
 
-    /**
-     * Shared SoT for media then SEO placeholder replacement (core renderStorefront parity).
-     */
     protected function replaceStorefrontPlaceholders(string $content): string
     {
         return $this->htmlRenderer->replaceStorefrontPlaceholders($content);

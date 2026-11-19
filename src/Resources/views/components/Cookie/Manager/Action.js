@@ -11,10 +11,6 @@ import {
 import { urlWithParams } from '@views-theme/modules/shared/http.js'
 
 /**
- * Lazy shell opener of the cookie drawer. Shows the cookie manager, or — with `{ consent }` — the
- * request for one feature cookie (wishlist). Refetches on every open and unmounts on close.
- * Owns only the drawer it mounted; a drawer of another Action is closed through its owner first.
- *
  * @extends {ShopwareComponent}
  */
 export default class CookieManagerAction extends ShopwareComponent {
@@ -53,8 +49,6 @@ export default class CookieManagerAction extends ShopwareComponent {
     }
 
     /**
-     * Public API — own click, `Cookie:Bar.openManager()`.
-     *
      * @param {{ consent?: { featureName?: string, cookieName?: string } }} [options]
      *   `consent`: show the request for that feature cookie instead of the manager
      */

@@ -13,9 +13,6 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Page:Logo — `page-logo`, else the bundled Views asset; Twig only composes.
- */
 #[AsTwigComponent]
 class Logo
 {

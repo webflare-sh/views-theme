@@ -9,9 +9,6 @@ use Shopware\Core\System\Country\CountryEntity;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Address:Manager:Item — display lines, default flag, shipping block.
- */
 #[AsTwigComponent]
 class Item
 {
@@ -21,7 +18,6 @@ class Item
 
     public bool $selected = false;
 
-    /** Hydrated from Pane and List so the call chain stays valid. */
     public ?string $activeId = null;
 
     public ?string $defaultId = null;

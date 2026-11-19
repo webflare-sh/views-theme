@@ -1,11 +1,7 @@
 /**
- * Shipping calculation store (country / payment method / shipping method).
- *
- * Fields write here; `Cart` is the only executor and subscribes to `request`.
- * One store per page, so a cart page and an open drawer stay in sync.
- *
  * @module @views-theme/modules/shipping/store
  */
+
 import { createSignal } from '@views-theme/modules/shared/signal.js'
 
 /**
@@ -19,7 +15,6 @@ import { createSignal } from '@views-theme/modules/shared/signal.js'
  * @property {Element|null} source
  */
 
-/** Current value per connected field. */
 export const values = createSignal(/** @type {ShippingValues} */ ({}))
 
 /** Set only by `select` (user intent), never by `connect`. */
@@ -30,8 +25,6 @@ const connections = new Map()
 let seq = 0
 
 /**
- * Register a mounted field with its server-rendered value.
- *
  * @param {string} name
  * @param {string} value
  * @returns {() => void} disconnect; the value is dropped with the last field of that name
@@ -54,8 +47,6 @@ export function connect(name, value) {
 }
 
 /**
- * User picked a value: update the store and ask the executor to apply it.
- *
  * @param {string} name
  * @param {string} value
  * @param {Element|null} [source]

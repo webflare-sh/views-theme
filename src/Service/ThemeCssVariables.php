@@ -26,8 +26,6 @@ class ThemeCssVariables
     }
 
     /**
-     * Theme fields with `custom.css: true` as custom properties. `scss` is not consulted.
-     *
      * @return array<string, string|int>
      */
     public function resolve(SalesChannelContext $context): array

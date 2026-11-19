@@ -44,10 +44,6 @@ export default class FilterDrawerAction extends ShopwareComponent {
         this._unmountDrawer()
     }
 
-    /**
-     * Public API — click and callMethod.
-     * No-op when already open.
-     */
     async open() {
         if (this._loading) {
             return

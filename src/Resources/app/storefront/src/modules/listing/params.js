@@ -1,6 +1,4 @@
 /**
- * Pure listing query/param helpers.
- *
  * @module @views-theme/modules/listing/params
  */
 

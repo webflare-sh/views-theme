@@ -1,17 +1,12 @@
 /**
- * Shared JSDoc typedefs for ViewsTheme storefront modules and components.
- * Runtime: empty module (import only for types if needed).
- *
  * @module @views-theme/modules/types
  */
 
 /**
- * Query string bag used for listing XHR and history.
  * @typedef {Record<string, string>} ListingRequestParams
  */
 
 /**
- * Product:Listing static options (data-component-options).
  * @typedef {object} ListingOptions
  * @property {string|null} [resultsUrl]
  * @property {string|null} [aggregationsUrl]
@@ -33,14 +28,12 @@
  */
 
 /**
- * Context passed into listing module factories.
  * @typedef {object} ListingModuleContext
  * @property {Element} el
  * @property {() => ListingOptions} getOptions
  */
 
 /**
- * Active filter chip label.
  * @typedef {object} ListingLabel
  * @property {string} id
  * @property {string} label
@@ -49,7 +42,6 @@
  */
 
 /**
- * Listing filter/pagination/sorting control contract (duck-typed).
  * @typedef {object} ListingControl
  * @property {Element} [el]
  * @property {object} [options]
@@ -68,7 +60,6 @@
  */
 
 /**
- * Batch filter-options JSON from theme XHR.
  * @typedef {object} FilterOptionsPayload
  * @property {Record<string, string>} [options]
  * @property {Record<string, Record<string, unknown>>} [meta]

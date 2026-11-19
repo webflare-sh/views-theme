@@ -1,4 +1,3 @@
-/** Selection badge: count SoT is options; DOM is a paint. */
 /**
  * @extends {ShopwareComponent}
  */

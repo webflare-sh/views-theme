@@ -10,9 +10,6 @@ use Shopware\Core\System\SystemConfig\SystemConfigService;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Product:Actions — secondary product actions (wishlist, …); Twig composes.
- */
 #[AsTwigComponent]
 class Actions
 {

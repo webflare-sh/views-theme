@@ -10,9 +10,6 @@ use Shopware\Storefront\Page\Address\Listing\AddressListingPage;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Address:Manager — split current vs available per tab.
- */
 #[AsTwigComponent]
 class Manager
 {

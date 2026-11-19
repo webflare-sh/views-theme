@@ -1,10 +1,4 @@
 /**
- * Cookie consent domain logic shared by Cookie:Bar and Cookie:Manager: loads the cookie groups,
- * applies a consent mode (cookie set/remove), tracks the per-language config hash and publishes
- * `CookieConfiguration_Update` on `document.$emitter` (the event third-party tracking listens to).
- *
- * Parity with core `CookieConfiguration` (mode semantics, hash reset, update payload).
- *
  * @module @views-theme/modules/cookie/consent
  */
 
@@ -48,8 +42,6 @@ export function isPreferenceSet() {
 }
 
 /**
- * Snapshot of which cookies are currently active, for diffing the next update.
- *
  * @param {{ cookie: string, required: boolean }[]} cookies
  * @returns {ConsentState}
  */
@@ -69,8 +61,6 @@ export function snapshotState(cookies) {
 }
 
 /**
- * Apply a consent mode and publish the update.
- *
  * @param {string} groupsUrl `frontend.cookie.groups`
  * @param {ConsentMode} mode `required` = technically required only, `all`, or `selected`
  * @param {{ selected?: string[], previous?: ConsentState|null }} [options]
@@ -129,7 +119,6 @@ export async function checkConfigurationHash(groupsUrl) {
         return 'language'
     }
 
-    // Same configuration: extend the hash lifetime.
     if (storedHash) {
         storeHash(data.languageId, data.hash, storedHashData)
     }
@@ -138,8 +127,6 @@ export async function checkConfigurationHash(groupsUrl) {
 }
 
 /**
- * Set the cookies of the active groups, remove the others.
- *
  * @param {object[]} groups
  * @param {ConsentMode} mode
  * @param {string[]} selected
@@ -221,8 +208,6 @@ function extractCookies(groups) {
 }
 
 /**
- * Only cookies whose state changed against `previous` (every cookie when there is no previous state).
- *
  * @param {string[]} active
  * @param {string[]} inactive
  * @param {ConsentState|null} previous

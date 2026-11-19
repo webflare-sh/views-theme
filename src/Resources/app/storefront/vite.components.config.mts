@@ -11,7 +11,6 @@ export default async () => {
         namespace: 'ViewsTheme',
         storefrontAppDir,
         resolveAliases: {
-            // Same specifier as npm file: dependency (dev server + IDE)
             '@views-theme/modules': modulesDir,
         },
     })

@@ -10,11 +10,6 @@ use Shopware\Core\Checkout\Order\Aggregate\OrderLineItem\OrderLineItemEntity;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for LineItem — maps a cart or order line item to its type component.
- *
- * Order matches core line-item.html.twig: product, then the discount heuristic. Containers and generic items render as a product row.
- */
 #[AsTwigComponent]
 class LineItem
 {

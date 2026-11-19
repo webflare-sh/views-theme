@@ -1,7 +1,3 @@
-/**
- * Minimal ambient types for Shopware storefront component system (IDE / checkJs).
- */
-
 declare class ShopwareComponent {
     static options: Record<string, unknown>
     el: HTMLElement
@@ -32,7 +28,6 @@ interface ShopwareGlobal {
 
 interface Window {
     Shopware: ShopwareGlobal
-    /** Theme viewport px map (`theme_config('breakpoint.*')`) — keys `xs`–`xxl`. */
     breakpoints?: Record<string, number>
     focusHandler: {
         getFocusableElements(root: Element): HTMLElement[]
@@ -43,9 +38,7 @@ interface Window {
     wishlistProducts?: Record<string, unknown>
     activeNavigationId?: string
     activeNavigationPathIdList?: string[]
-    /** Core cookie consent switch (`core.basicInformation.useDefaultCookieConsent`). */
     useDefaultCookieConsent?: boolean
-    /** Core reCAPTCHA gate, re-run once the cookie preference changes. */
     registerGoogleReCaptchaPlugins?: () => void
     PluginManager?: { initializePlugins(): void }
 }

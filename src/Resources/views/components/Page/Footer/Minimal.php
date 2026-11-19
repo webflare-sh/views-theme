@@ -9,9 +9,6 @@ use Shopware\Storefront\Pagelet\Footer\FooterPagelet;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Page:Footer:Minimal — shipping URL for the VAT notice; Twig only composes.
- */
 #[AsTwigComponent]
 class Minimal
 {

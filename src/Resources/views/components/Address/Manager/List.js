@@ -1,8 +1,6 @@
 import { getInstanceByElement } from '@views-theme/modules/shared/component.js'
 
 /**
- * Available-address list — client-side search filter.
- *
  * @extends {ShopwareComponent}
  */
 export default class AddressManagerList extends ShopwareComponent {

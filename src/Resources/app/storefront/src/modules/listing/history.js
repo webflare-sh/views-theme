@@ -1,6 +1,4 @@
 /**
- * Listing history push / popstate helpers.
- *
  * @module @views-theme/modules/listing/history
  */
 

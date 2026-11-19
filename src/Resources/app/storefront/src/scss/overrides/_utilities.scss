@@ -1,4 +1,3 @@
-// Track count utilities (`.grid-columns-*`). Also Bootstrap's flex-grid column count.
 $grid-column-counts: ();
 @for $i from 1 through $grid-columns {
   $grid-column-counts: map-merge($grid-column-counts, ($i: unquote("repeat(#{$i}, minmax(0, 1fr))")));

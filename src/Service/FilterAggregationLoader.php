@@ -9,9 +9,6 @@ use Shopware\Core\Framework\DataAbstractionLayer\Search\EntitySearchResult;
 use Shopware\Core\System\SalesChannel\SalesChannelContext;
 use Symfony\Component\HttpFoundation\Request;
 
-/**
- * Loads reduced aggregations for filter availability via ProductListingGateway.
- */
 final class FilterAggregationLoader
 {
     public function __construct(

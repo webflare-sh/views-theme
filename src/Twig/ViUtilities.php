@@ -26,7 +26,6 @@ class ViUtilities extends AbstractExtension
 
     private const META_CLASSES = 'vi_classes';
 
-    /** HTML template that executed `vi_define_cva` on this mounted component. */
     private const META_TEMPLATE = 'vi_template';
 
     private const CTX_ATTRS = '__vi_attrs';
@@ -34,8 +33,6 @@ class ViUtilities extends AbstractExtension
     private const CTX_CLASSES = '__vi_classes';
 
     /**
-     * Stack of configs captured while evaluating `.cva.twig` files.
-     *
      * @var list<array<string, mixed>>
      */
     private array $cvaExportStack = [];
@@ -149,9 +146,6 @@ class ViUtilities extends AbstractExtension
     }
 
     /**
-     * Bind nest bags from `attributes` onto the current component (stack + context).
-     * Resolve with `vi_attrs('slot')` — do not `{% set attrs %}`.
-     *
      * @param array<string, mixed> $context
      * @param list<string>         $slots
      */
@@ -179,8 +173,6 @@ class ViUtilities extends AbstractExtension
     }
 
     /**
-     * Resolve a nest bag bound by `vi_define_attrs` (component stack, then context / outerScope).
-     *
      * @param array<string, mixed> $context
      */
     public function attrs(Environment $env, array $context, string $slot): ComponentAttributes

@@ -1,9 +1,6 @@
 import { getInstanceByElement } from '@views-theme/modules/shared/component.js'
 
 /**
- * Accessible tabs owner — discovers Tabs:Tab / Tabs:Panel children.
- * State SoT is ARIA (`aria-selected`) + panel `hidden`; look follows CSS.
- *
  * @extends {ShopwareComponent}
  */
 export default class Tabs extends ShopwareComponent {

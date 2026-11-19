@@ -11,9 +11,6 @@ use Webflare\ViewsTheme\Service\SalesChannelContextAccessor;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Product:BuyContainer — PDP / CMS buy-box shell gates; Twig composes children.
- */
 #[AsTwigComponent]
 class BuyContainer
 {

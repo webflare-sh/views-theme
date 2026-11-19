@@ -1,8 +1,4 @@
 /**
- * Client session for the page product listing.
- *
- * Controls dispatch and subscribe here. Product:Listing is the only executor.
- *
  * @module @views-theme/modules/listing/store
  */
 

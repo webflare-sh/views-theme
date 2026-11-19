@@ -24,8 +24,6 @@ class ThemeParametersResolver
     }
 
     /**
-     * Resolves the active theme's configuration (theme.json) for the given request.
-     *
      * @return array<string, mixed>|null The theme config array, or null if no theme is active or resolution fails.
      */
     public function resolve(Request $request, SalesChannelContext $context): ?array

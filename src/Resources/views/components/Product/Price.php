@@ -10,10 +10,6 @@ use Shopware\Core\Content\Product\SalesChannel\SalesChannelProductEntity;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Product:Price — resolve display price / from-prefix / list-price gates; Twig only composes.
- * Tier table / tax note are parent-mounted siblings (Product:Price:Tiered / Product:Price:Tax).
- */
 #[AsTwigComponent]
 class Price
 {

@@ -12,9 +12,6 @@ use Shopware\Storefront\Framework\Routing\RequestTransformer;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\UX\TwigComponent\ComponentRendererInterface;
 
-/**
- * Renders UX components and runs storefront media/SEO placeholder replacement (SoT).
- */
 final class ComponentHtmlRenderer
 {
     public function __construct(

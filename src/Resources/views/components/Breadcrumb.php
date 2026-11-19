@@ -13,9 +13,6 @@ use Shopware\Core\Content\Seo\SeoUrlPlaceholderHandlerInterface;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Breadcrumb — categoryId → core CategoryBreadcrumbBuilder → items.
- */
 #[AsTwigComponent]
 class Breadcrumb
 {

@@ -10,9 +10,6 @@ use Shopware\Core\Framework\Feature;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Checkout:Success:Payment — selected order payment method, 6.7 vs 6.8.
- */
 #[AsTwigComponent]
 class Payment
 {

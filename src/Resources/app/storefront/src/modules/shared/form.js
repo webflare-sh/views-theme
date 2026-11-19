@@ -1,6 +1,4 @@
 /**
- * Form field enable / required / invalid chrome.
- *
  * @module @views-theme/modules/shared/form
  */
 
@@ -38,8 +36,6 @@ export function setRequired(field, required) {
 }
 
 /**
- * Disable or restore a control. Remembers required / our disable so show can restore.
- *
  * @param {Element|null|undefined} field
  * @param {boolean} enabled
  */
@@ -75,8 +71,6 @@ export function setFieldEnabled(field, enabled) {
 }
 
 /**
- * Bootstrap invalid chrome on the control (`is-invalid` + `aria-invalid`).
- *
  * @param {Element|null|undefined} field
  * @param {boolean} invalid
  */

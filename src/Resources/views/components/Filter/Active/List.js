@@ -1,8 +1,6 @@
 import { resetOption, subscribe } from '@views-theme/modules/listing/store.js'
 
 /**
- * Paints removable active chips into the shell's flex row.
- *
  * @extends {ShopwareComponent}
  */
 export default class FilterActiveList extends ShopwareComponent {

@@ -7,8 +7,6 @@ import {
 } from '@views-theme/modules/shared/http.js'
 
 /**
- * Address picker / editor owner inside Modal.
- *
  * @extends {ShopwareComponent}
  */
 export default class AddressManager extends ShopwareComponent {
@@ -320,8 +318,6 @@ export default class AddressManager extends ShopwareComponent {
     }
 
     /**
-     * Copy the response panel title and footer actions onto the open modal.
-     *
      * @param {Element} source
      */
     _syncPanelChrome(source) {
@@ -407,8 +403,6 @@ export default class AddressManager extends ShopwareComponent {
     }
 
     /**
-     * Check this item's radio. Same `name` clears the previous one.
-     *
      * @param {HTMLElement} item
      */
     _checkVisibleRadio(item) {

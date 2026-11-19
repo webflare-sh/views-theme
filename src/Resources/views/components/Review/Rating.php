@@ -7,9 +7,6 @@ namespace Webflare\ViewsTheme\Resources\views\components\Review;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Review:Rating — star icon list from points; Twig composes.
- */
 #[AsTwigComponent]
 class Rating
 {

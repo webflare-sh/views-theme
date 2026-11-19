@@ -10,9 +10,6 @@ use Shopware\Core\System\SystemConfig\SystemConfigService;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Captcha — resolves the active Shopware captchas; Twig only mounts one child per type.
- */
 #[AsTwigComponent]
 class Captcha
 {
@@ -28,14 +25,9 @@ class Captcha
 
     public ?string $formId = null;
 
-    /**
-     * Form id the core captcha plugins and the server validation key off (`form-{formId}`).
-     */
     public string $captchaFormId = '';
 
     /**
-     * Active captchas in config order.
-     *
      * @var list<CaptchaEntry>
      */
     public array $captchas = [];

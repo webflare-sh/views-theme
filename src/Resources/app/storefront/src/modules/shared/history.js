@@ -1,9 +1,4 @@
 /**
- * Configurable history push / popstate helpers for URL-SoT owners.
- *
- * Domain modules inject key sets and param encode/delete (e.g. listing `|` scalars
- * vs review `points[]`).
- *
  * @module @views-theme/modules/shared/history
  */
 

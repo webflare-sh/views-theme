@@ -9,8 +9,6 @@ import {
 } from '@views-theme/modules/lazy-shell.js'
 
 /**
- * Lazy-loads Gallery:Fullscreen shell; owns mount lifecycle.
- *
  * @extends {ShopwareComponent}
  */
 export default class GalleryActionFullscreen extends ShopwareComponent {

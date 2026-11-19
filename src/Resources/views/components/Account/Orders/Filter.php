@@ -10,7 +10,6 @@ use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
 /**
- * View-model for Account:Orders:Filter — Form:Select options for order status and date range.
  * The "all" option value is {@see self::ALL}; the server ignores it like any unknown value.
  */
 #[AsTwigComponent]
@@ -19,8 +18,6 @@ class Filter
     public const ALL = 'all';
 
     /**
-     * Order states as `{ technicalName, name }` (page extension `viewsTheme.orderFilter.states`).
-     *
      * @var iterable<array{technicalName: string, name: string}>
      */
     public iterable $states = [];

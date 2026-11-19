@@ -1,4 +1,3 @@
-/* Shared circular control chrome (Gallery, Carousel). Position belongs to the host. */
 .vi-control {
   inline-size: var(--vi-control-size, 40px);
   block-size: var(--vi-control-size, 40px);

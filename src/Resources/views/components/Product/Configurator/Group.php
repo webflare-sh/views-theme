@@ -12,9 +12,6 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Product:Configurator:Group — one fieldset, either a select or radios.
- */
 #[AsTwigComponent]
 class Group
 {

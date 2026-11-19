@@ -1,6 +1,4 @@
 /**
- * Listing Results island DOM helpers.
- *
  * @module @views-theme/modules/listing/results-dom
  */
 

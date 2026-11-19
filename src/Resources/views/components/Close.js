@@ -1,6 +1,4 @@
 /**
- * Calls `close` on the component named in `targetComponentName` (Drawer, Modal, Search overlay, …).
- *
  * @extends {ShopwareComponent}
  */
 export default class Close extends ShopwareComponent {

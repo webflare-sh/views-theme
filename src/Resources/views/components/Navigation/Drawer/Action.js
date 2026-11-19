@@ -41,10 +41,6 @@ export default class NavigationDrawerAction extends ShopwareComponent {
         this._unmountDrawer()
     }
 
-    /**
-     * Public API — header click and callMethod.
-     * No-op when already open.
-     */
     async open() {
         if (this._loading) {
             return

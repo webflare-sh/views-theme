@@ -1,5 +1,3 @@
-/* Active look follows aria-selected (JS state SoT) — not class toggles. */
-
 .vi-tabs__tab {
   --nav-link-color: var(--vi-tab-color, var(--tertiary-color));
   --nav-link-hover-color: var(--vi-tab-hover-color, var(--link-hover-color));

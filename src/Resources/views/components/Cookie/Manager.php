@@ -12,15 +12,10 @@ use Shopware\Core\System\SystemConfig\SystemConfigService;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Cookie:Manager — turns core cookie groups into switchable group/entry views.
- */
 #[AsTwigComponent]
 class Manager
 {
     /**
-     * Core cookie groups (`CookieGroupCollection`).
-     *
      * @var iterable<CookieGroup>
      */
     public iterable $groups = [];

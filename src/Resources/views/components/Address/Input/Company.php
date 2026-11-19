@@ -9,9 +9,6 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Address:Input:Company — company, department, and VAT field codes.
- */
 #[AsTwigComponent]
 class Company
 {

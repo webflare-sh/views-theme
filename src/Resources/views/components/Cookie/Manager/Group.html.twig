@@ -6,7 +6,6 @@
 {% do vi_define_cva(cva) %}
 {% do vi_define_attrs(['row', 'switch', 'title', 'toggle', 'panel', 'entries', 'description', 'entry', 'entrySwitch', 'entryDescription']) %}
 
-{# Required cookies are on and cannot be switched off #}
 {% set required = group.required %}
 {# Names are translated in PHP but still plugin / snippet text; Form:Switch prints `label|raw` #}
 {% set name = group.name|sw_sanitize %}
@@ -18,7 +17,6 @@
     class="{{ vi_class('root') }}"
 >
     {% if group.entries is empty %}
-        {# The group is a cookie itself #}
         {% block cookie %}
             <div {{ vi_attrs('row') }} class="{{ vi_class('row') }}">
                 <div {{ vi_attrs('entry') }} class="{{ vi_class('entry') }}">

@@ -9,9 +9,6 @@ use Shopware\Core\Framework\DataAbstractionLayer\Search\EntitySearchResult;
 use Shopware\Core\System\SalesChannel\SalesChannelContext;
 use Symfony\Component\HttpFoundation\Request;
 
-/**
- * Catalog facet resolve + optional reduced-aggregation availability (SSR + batch SoT).
- */
 final class FilterFacetPipeline
 {
     public function __construct(

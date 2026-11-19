@@ -1,4 +1,3 @@
-/* Hide host (toggle + panel) below lg — CVA: d-none d-lg-contents on host extras */
 .vi-dropdown-host--lg-up {
   /* Top-layer popover can outlive host box; force-dismiss without fade */
   @media (max-width: 1023.98px) {
@@ -14,8 +13,6 @@
     }
   }
 }
-
-/* Native popover + CSS anchor placement only — chrome in Dropdown.cva.twig */
 
 .vi-dropdown[popover] {
   inset: unset;

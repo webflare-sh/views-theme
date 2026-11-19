@@ -7,7 +7,6 @@
   max-block-size: var(--vi-max-h, 100%);
 }
 
-/* Nested Gallery mode=fullscreen owns fill; shell only sizes the mount slot */
 .vi-gallery-fullscreen__gallery {
   min-block-size: 0;
 }

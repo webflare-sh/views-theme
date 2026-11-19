@@ -5,7 +5,6 @@ import type { IconifyJSON } from "@iconify/types"
 
 const buildPath = 'src/Resources/app/storefront/src/assets/css/icons'
 
-/** Iconify name, or object with source name + custom CSS class suffix (after `icon-`). */
 type IconEntry = string | { icon: string; class: string }
 
 /**

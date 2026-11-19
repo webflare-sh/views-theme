@@ -1,9 +1,6 @@
 import { connect, select, values } from '@views-theme/modules/shipping/store.js'
 
 /**
- * One shipping calculation select. Reads its own native control only; talks to
- * the rest through `shipping/store.js`.
- *
  * @extends {ShopwareComponent}
  */
 export default class ShippingCalculationField extends ShopwareComponent {

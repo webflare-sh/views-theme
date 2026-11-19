@@ -1,6 +1,4 @@
 /**
- * Shared mount/wait/unmount helpers for lazy-loaded shell Actions.
- *
  * @module @views-theme/modules/lazy-shell
  */
 

@@ -6,8 +6,6 @@ import {
 import { parseHtmlFragment } from '@views-theme/modules/shared/dom.js'
 
 /**
- * Cart drawer body: first fill of the pending shell, then in-open island refresh.
- *
  * @extends {ShopwareComponent}
  */
 export default class CartDrawerBody extends ShopwareComponent {
@@ -21,7 +19,6 @@ export default class CartDrawerBody extends ShopwareComponent {
         footerComponent: 'ViewsTheme:Cart:Drawer:Footer',
         drawerSelector: '#vi-cart-drawer',
         bodyComponent: 'ViewsTheme:Cart:Drawer:Body',
-        /** Rendered without cart data (loader only): fetch and fill on init */
         pending: false,
     }
 
@@ -115,8 +112,6 @@ export default class CartDrawerBody extends ShopwareComponent {
     }
 
     /**
-     * First fill: take every child of the response body (loader out, islands in, server order kept).
-     *
      * @param {ParentNode} source
      */
     _fill(source) {

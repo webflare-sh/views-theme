@@ -1,6 +1,4 @@
 /**
- * Review query/param helpers (URL SoT).
- *
  * @module @views-theme/modules/review/params
  */
 
@@ -127,7 +125,6 @@ export function urlParams() {
         out.points = out.points.split('|').filter(Boolean)
     }
 
-    // Scalar points → list (matches loader / Matrix control)
     if (typeof out.points === 'string' && out.points !== '') {
         out.points = [out.points]
     }

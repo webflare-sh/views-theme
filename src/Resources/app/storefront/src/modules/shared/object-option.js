@@ -1,6 +1,4 @@
 /**
- * Shared option/control param helpers for URL-SoT owners (listing, review, …).
- *
  * @module @views-theme/modules/shared/object-option
  */
 
@@ -16,8 +14,6 @@ export function objectOption(value) {
 }
 
 /**
- * Merge getValues() from control instances (arrays de-duped).
- *
  * @param {Iterable<{ getValues?: () => Record<string, unknown> }>} controls
  * @returns {Record<string, unknown>}
  */

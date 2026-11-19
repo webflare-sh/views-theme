@@ -1,8 +1,6 @@
 import { getInstanceByElement } from '@views-theme/modules/shared/component.js'
 
 /**
- * Prev/next control — commands nearest Gallery owner.
- *
  * @extends {ShopwareComponent}
  */
 export default class GalleryControl extends ShopwareComponent {

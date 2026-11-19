@@ -2,8 +2,6 @@ import { apply } from '@views-theme/modules/listing/store.js'
 import { applyReview } from '@views-theme/modules/review/apply.js'
 
 /**
- * Pagination page link → owner.apply({ p }).
- *
  * @extends {ShopwareComponent}
  */
 export default class PaginationItem extends ShopwareComponent {

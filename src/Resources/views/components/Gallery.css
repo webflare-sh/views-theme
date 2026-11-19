@@ -14,7 +14,6 @@
     --vi-thumb-snap-align: center;
   }
 
-  /* Sole orientation breakpoint: side + vertical thumbs from md */
   @media (min-width: 768px) {
     &[data-multi='true'] {
       --vi-areas: 'thumbs canvas';
@@ -26,7 +25,6 @@
     }
   }
 
-  /* Fullscreen mode: height-constrained fill (modal shell) */
   &[data-mode='fullscreen'] {
     --vi-min-h: 0;
     --vi-media-ar: auto;

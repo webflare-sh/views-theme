@@ -14,9 +14,6 @@ use Shopware\Core\Framework\DataAbstractionLayer\Search\EntitySearchResult;
 use Shopware\Core\System\SalesChannel\SalesChannelContext;
 use Symfony\Component\HttpFoundation\Request;
 
-/**
- * Single I/O path for theme listing category/search loads (results, catalog aggs, reduced aggs).
- */
 final class ProductListingGateway
 {
     public function __construct(
@@ -60,9 +57,6 @@ final class ProductListingGateway
         return $result?->getAggregations();
     }
 
-    /**
-     * Resolve scope from request + optional listing DTO (unified navigationId sources).
-     */
     public function resolveScope(Request $request, ?EntitySearchResult $listing = null): ?ListingScope
     {
         $navigationId = $this->resolveNavigationId($request, $listing);

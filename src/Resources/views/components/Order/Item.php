@@ -15,9 +15,6 @@ use Shopware\Core\System\SystemConfig\SystemConfigService;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Order:Item — payment/shipping states, 6.7 vs 6.8 accessors.
- */
 #[AsTwigComponent]
 class Item
 {

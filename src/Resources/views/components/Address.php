@@ -13,10 +13,6 @@ use Shopware\Core\System\Salutation\SalutationEntity;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Address — one display string per address field.
- * fullName includes the salutation. Template owns a block and span for each field, plus the shipping Alert.
- */
 #[AsTwigComponent]
 class Address
 {

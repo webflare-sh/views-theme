@@ -4,12 +4,6 @@ declare(strict_types=1);
 
 namespace Webflare\ViewsTheme\Struct;
 
-/**
- * One active captcha for Captcha.
- *
- * `component` is the UX tag for `component()`. `slot` is the Captcha CVA / attrs slot,
- * `visible` is false for captchas that render nothing the shopper can see (honeypot).
- */
 final readonly class CaptchaEntry
 {
     /**

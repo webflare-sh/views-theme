@@ -1,8 +1,6 @@
 import { apply } from '@views-theme/modules/configurator/store.js'
 
 /**
- * Dispatches a select or radio change into the configurator store.
- *
  * @extends {ShopwareComponent}
  */
 export default class ProductConfiguratorGroup extends ShopwareComponent {

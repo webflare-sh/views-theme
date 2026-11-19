@@ -15,9 +15,6 @@ use Shopware\Storefront\Pagelet\Footer\FooterPagelet;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Page:Footer — CMS URLs + payment/shipping logos; Twig only composes.
- */
 #[AsTwigComponent]
 class Footer
 {

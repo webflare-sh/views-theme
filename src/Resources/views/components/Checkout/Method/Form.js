@@ -1,6 +1,4 @@
 /**
- * Payment / shipping configure form — native change → submit.
- *
  * @extends {ShopwareComponent}
  */
 export default class CheckoutMethodForm extends ShopwareComponent {

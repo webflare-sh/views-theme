@@ -1,7 +1,4 @@
 /**
- * Accessible accordion owner — discovers Accordion:Header / Accordion:Panel children.
- * State SoT is ARIA (`aria-expanded`) + panel `inert`; look follows CSS.
- *
  * @extends {ShopwareComponent}
  */
 export default class Accordion extends ShopwareComponent {

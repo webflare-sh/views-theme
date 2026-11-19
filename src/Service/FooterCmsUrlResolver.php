@@ -12,12 +12,6 @@ use Shopware\Core\Content\Seo\SeoUrlPlaceholderHandlerInterface;
 use Shopware\Core\System\SystemConfig\SystemConfigService;
 use Shopware\Storefront\Pagelet\Footer\FooterPagelet;
 
-/**
- * Resolves CMS-page URLs for footer chrome (contact, revocation, shipping/VAT).
- *
- * Prefers a matching category `seoUrl` from the service menu or footer nav tree,
- * then falls back to `frontend.cms.page.full`.
- */
 final class FooterCmsUrlResolver
 {
     public function __construct(

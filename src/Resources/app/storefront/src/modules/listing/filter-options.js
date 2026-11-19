@@ -1,6 +1,4 @@
 /**
- * Apply filter-options payload / reduced aggregations onto controls.
- *
  * @module @views-theme/modules/listing/filter-options
  */
 

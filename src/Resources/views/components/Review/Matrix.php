@@ -11,9 +11,6 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Review:Matrix — points filter rows from reviews DTO + URL SoT.
- */
 #[AsTwigComponent]
 class Matrix
 {

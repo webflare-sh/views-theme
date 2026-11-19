@@ -9,9 +9,6 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Pagination — page window + gates; Twig composes leaf controls.
- */
 #[AsTwigComponent]
 class Pagination
 {
@@ -47,9 +44,6 @@ class Pagination
     public string $searchQuery = '';
 
     /**
-     * Query params preserved on every page href (filters, sort, search, …).
-     * Page parameter is overwritten per link; denylisted display keys are stripped when built via preserveQuery.
-     *
      * @var array<string, string>
      */
     public array $query = [];

@@ -12,9 +12,6 @@ use Shopware\Core\System\SalesChannel\SalesChannelContext;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Language:Action — derivation lives here; Twig only composes.
- */
 #[AsTwigComponent]
 class Action
 {

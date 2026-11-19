@@ -188,7 +188,6 @@ export default class FilterRange extends ShopwareComponent {
             return
         }
         if (min > max && this._min && this._max) {
-            // Keep the field that was just edited within the other
             if (document.activeElement === this._min) {
                 this._min.value = String(max)
             } else if (document.activeElement === this._max) {

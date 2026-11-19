@@ -115,8 +115,6 @@ class ReviewController extends AbstractComponentController
     }
 
     /**
-     * Plain scalars for Twig — never pass RequestDataBag into components.
-     *
      * @return array{points: float, title: string, content: string, id: ?string}
      */
     private function formValuesFromBag(DataBag $data): array

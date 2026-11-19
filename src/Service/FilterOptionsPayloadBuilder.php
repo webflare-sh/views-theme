@@ -9,9 +9,6 @@ use Shopware\Core\Framework\DataAbstractionLayer\Search\EntitySearchResult;
 use Shopware\Core\System\SalesChannel\SalesChannelContext;
 use Symfony\Component\HttpFoundation\Request;
 
-/**
- * Builds batch filter-options JSON: option list HTML + meta (disabled/count/checked).
- */
 final class FilterOptionsPayloadBuilder
 {
     public function __construct(

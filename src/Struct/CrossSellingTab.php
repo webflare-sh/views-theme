@@ -6,9 +6,6 @@ namespace Webflare\ViewsTheme\Struct;
 
 use Shopware\Core\Content\Product\ProductCollection;
 
-/**
- * One Cms:CrossSelling tab: cross-selling id + label, its products, and the tab / panel ids.
- */
 final readonly class CrossSellingTab
 {
     public function __construct(

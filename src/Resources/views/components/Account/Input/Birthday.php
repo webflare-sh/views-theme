@@ -11,9 +11,6 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Account:Input:Birthday — day, month, and year passed to Form:Birthday.
- */
 #[AsTwigComponent]
 class Birthday
 {

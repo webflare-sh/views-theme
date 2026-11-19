@@ -9,9 +9,6 @@ use Shopware\Core\Content\Product\SalesChannel\SalesChannelProductEntity;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Product:Action:Detail — listing-aware href; Twig only composes root-host Button.
- */
 #[AsTwigComponent]
 class Detail
 {

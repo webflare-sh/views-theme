@@ -10,9 +10,6 @@ use Shopware\Core\Content\Product\SalesChannel\CrossSelling\CrossSellingElement;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Cms:CrossSelling — one tab + Product:Carousel per active cross-selling with products.
- */
 #[AsTwigComponent]
 class CrossSelling
 {
@@ -21,20 +18,10 @@ class CrossSelling
      */
     public mixed $crossSellings = null;
 
-    /**
-     * `Product:Box` layout, passed to `Product:Carousel` (which normalises `standard` / empty).
-     */
     public string $boxLayout = 'default';
 
-    /**
-     * Carousel item width, passed to `Product:Carousel` (which validates it).
-     */
     public string|int|null $itemWidth = null;
 
-    /**
-     * Skip-link target (CMS block id). Renders a "Skip product gallery" link before the tabs
-     * and the `content-after-target-{id}` anchor after them.
-     */
     public ?string $skipTarget = null;
 
     /**
@@ -49,10 +36,6 @@ class CrossSelling
 
     public ?string $activeTabId = null;
 
-    /**
-     * False when no active cross-selling has products: the template renders nothing,
-     * so `Cms:Element` / `Cms:Block` drop the empty block.
-     */
     public bool $visible = false;
 
     /**

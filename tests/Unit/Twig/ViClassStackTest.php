@@ -13,9 +13,6 @@ use Twig\Environment;
 use Twig\Loader\ArrayLoader;
 use Twig\Runtime\EscaperRuntime;
 
-/**
- * Lexical-first vi_class stack resolution (outer CVA slot wins for block overrides).
- */
 final class ViClassStackTest extends TestCase
 {
     public function testViClassFromParentTemplateUsesParentSlotWhileChildIsCurrent(): void

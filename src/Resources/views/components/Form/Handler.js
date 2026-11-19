@@ -1,8 +1,6 @@
 import { isFormControl, setInvalidChrome } from '@views-theme/modules/shared/form.js'
 
 /**
- * Form owner — Constraint Validation, confirmFor match, submit loading.
- *
  * @extends {ShopwareComponent}
  */
 export default class FormHandler extends ShopwareComponent {

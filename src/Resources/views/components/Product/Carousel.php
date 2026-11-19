@@ -8,9 +8,6 @@ use Shopware\Core\Framework\Struct\Collection;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Product:Carousel — product list, box layout, item width + matching image `sizes`.
- */
 #[AsTwigComponent]
 class Carousel
 {
@@ -56,8 +53,6 @@ class Carousel
     public array $items = [];
 
     /**
-     * `Product:Box` image `sizes` per breakpoint, all equal to the item width.
-     *
      * @var array<string, string>
      */
     public array $sizes = [];

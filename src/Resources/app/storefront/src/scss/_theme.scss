@@ -1,5 +1,3 @@
-// Global token assigns. Breakpoints come from $grid-breakpoints via Bootstrap mixins.
-
 @mixin vi-collapse-until {
   @each $name, $width in $grid-breakpoints {
     @if $width > 0 {

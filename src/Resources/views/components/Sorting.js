@@ -1,8 +1,6 @@
 import { apply } from '@views-theme/modules/listing/store.js'
 
 /**
- * Listing control: sort order select.
- *
  * @extends {ShopwareComponent}
  */
 export default class Sorting extends ShopwareComponent {

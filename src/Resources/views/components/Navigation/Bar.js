@@ -119,7 +119,6 @@ export default class NavigationBar extends ShopwareComponent {
         this._wanted = trigger
         window.clearTimeout(this._timer)
 
-        // Back on the shown flyout: cancelling the pending switch / close is enough.
         if (trigger === (this._current?.trigger ?? null)) {
             return
         }

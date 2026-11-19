@@ -8,9 +8,6 @@ use Webflare\ViewsTheme\Struct\PageTitleMeta;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Page:Title. Twig composes the heading, description block, and meta line.
- */
 #[AsTwigComponent]
 class Title
 {

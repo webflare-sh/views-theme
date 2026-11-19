@@ -1,6 +1,4 @@
 /**
- * XHR helpers for theme component modules.
- *
  * @module @views-theme/modules/shared/http
  */
 

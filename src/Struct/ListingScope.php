@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace Webflare\ViewsTheme\Struct;
 
-/**
- * Category or search listing scope for ProductListingGateway.
- */
 final readonly class ListingScope
 {
     private function __construct(

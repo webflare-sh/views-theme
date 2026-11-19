@@ -1,9 +1,4 @@
 /**
- * Count pill that follows a bus event. Hidden at 0.
- *
- * `countKey` names the `window` property that holds the current count (read on mount, kept in sync on change).
- * `liveId` optionally names an `aria-live` element that announces the count (`liveText` with `%counter%`).
- *
  * @extends {ShopwareComponent}
  */
 export default class Count extends ShopwareComponent {

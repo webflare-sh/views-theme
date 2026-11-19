@@ -15,10 +15,6 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Checkout:Confirm:Title — heading and keyed meta for Page:Title.
- * Template fills the description block and passes the grid class through.
- */
 #[AsTwigComponent]
 class Title
 {

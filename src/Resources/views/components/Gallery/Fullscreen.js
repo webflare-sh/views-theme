@@ -3,8 +3,6 @@ import { getInstanceByElement } from '@views-theme/modules/shared/component.js'
 import { trapFocus } from '@views-theme/modules/shared/focus-trap.js'
 
 /**
- * Fullscreen gallery dialog shell.
- *
  * @extends {ShopwareComponent}
  */
 export default class GalleryFullscreen extends ShopwareComponent {

@@ -97,7 +97,6 @@ final class FilterAvailabilityApplierTest extends TestCase
 
         $props = $out[0]->props;
         self::assertSame(['o2'], $props['selectedIds']);
-        // OR unlock: full catalog allowed when group has selection
         self::assertSame(['o1', 'o2', 'o3'], $props['allowedIds']);
         self::assertFalse($props['disabled']);
     }

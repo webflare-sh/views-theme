@@ -3,12 +3,10 @@
   min-block-size: 0;
   block-size: var(--vi-canvas-h, auto);
   grid-area: canvas;
-  /* Composed Carousel: one full-width slide per snap stop */
   --vi-carousel-item-w: 100%;
   --vi-carousel-snap-stop: always;
 }
 
-/* Carousel track (`track:class`); scroll-snap layout + height tokens come from Carousel.css */
 .vi-gallery-canvas__track {
   border-radius: var(--vi-canvas-radius, 8px);
   background: var(--vi-canvas-bg, transparent);

@@ -10,11 +10,6 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Product:Listing — owner options + layout/referrer defaults; Twig composes Results.
- *
- * XHR URLs (results / aggregations / filter-options) are bridge-owned via Twig path() — not resolved here.
- */
 #[AsTwigComponent]
 class Listing
 {

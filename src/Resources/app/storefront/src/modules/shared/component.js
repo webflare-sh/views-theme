@@ -1,6 +1,4 @@
 /**
- * Shopware component instance helpers.
- *
  * Shopware mounts inserted `[data-component]` nodes from a MutationObserver
  * after a dynamic import-map `import()`. On a cold production chunk that
  * import can take longer than any frame-count poll, so callers must not race
@@ -76,8 +74,6 @@ export async function mountComponents(root, componentNames) {
 }
 
 /**
- * Normalize Drawer Open/Close bus payload to an element.
- *
  * @param {unknown} payload
  * @returns {Element|null}
  */

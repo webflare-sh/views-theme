@@ -1,8 +1,6 @@
 import { scrollEdges } from '@views-theme/modules/shared/scroll.js'
 
 /**
- * Scrollport with edge fades on the overflowing axis only.
- *
  * @extends {ShopwareComponent}
  */
 export default class ScrollArea extends ShopwareComponent {
@@ -34,7 +32,6 @@ export default class ScrollArea extends ShopwareComponent {
         this.el.removeAttribute('data-scroll-end')
     }
 
-    /** Re-read edges (e.g. after programmatic scroll or content size change). */
     sync() {
         this._syncScrollEdges()
     }
@@ -45,7 +42,6 @@ export default class ScrollArea extends ShopwareComponent {
         const canUp = scrollTop > 1
         const canDown = scrollTop + clientHeight < scrollHeight - 1
 
-        // Logical x offset: LTR and RTL (negative scrollLeft) share one path
         const { atStart, atEnd } = scrollEdges(this.el)
         const canStart = !atStart
         const canEnd = !atEnd

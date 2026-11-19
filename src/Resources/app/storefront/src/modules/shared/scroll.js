@@ -1,7 +1,6 @@
 /**
- * Pure horizontal scrollport math (no DOM writes). Offsets are **logical**:
- * distance from the inline start edge, so LTR and RTL (negative `scrollLeft`)
- * share one code path.
+ * Offsets are logical: distance from the inline start edge, so LTR and RTL
+ * (negative `scrollLeft`) share one code path.
  *
  * @module @views-theme/modules/shared/scroll
  */
@@ -80,9 +79,6 @@ export function pageTarget({ x, max, viewport, items, direction, rewind = false 
 }
 
 /**
- * Index of the item whose start edge is closest to the logical offset `x`:
- * the snapped item for `scroll-snap-align: start` cells.
- *
  * @param {{ start: number }[]} items Logical item edges, in order
  * @param {number} x Logical scroll offset
  * @returns {number} 0-based index, or `-1` without items

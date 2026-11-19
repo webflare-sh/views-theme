@@ -8,9 +8,6 @@ use Shopware\Core\Content\Product\SalesChannel\SalesChannelProductEntity;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Product:Box:Body — variation gate + description visibility; Twig only composes.
- */
 #[AsTwigComponent]
 class Body
 {

@@ -13,9 +13,6 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Address:Input:AccountType — private/business select and company disclosure.
- */
 #[AsTwigComponent]
 class AccountType
 {

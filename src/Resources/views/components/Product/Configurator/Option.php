@@ -11,9 +11,6 @@ use Shopware\Core\Content\Property\PropertyGroupEntity;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Product:Configurator:Option — radio shell. The label face is text, color, or media.
- */
 #[AsTwigComponent]
 class Option
 {

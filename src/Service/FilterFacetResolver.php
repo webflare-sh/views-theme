@@ -14,9 +14,6 @@ use Shopware\Core\Framework\DataAbstractionLayer\Search\AggregationResult\Metric
 use Shopware\Core\Framework\DataAbstractionLayer\Search\EntitySearchResult;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-/**
- * Maps listing aggregations to ordered Filter:Panel facet view-models.
- */
 final class FilterFacetResolver
 {
     public function __construct(

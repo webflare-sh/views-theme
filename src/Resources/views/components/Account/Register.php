@@ -12,9 +12,6 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Account:Register — guest password gate; Twig composes fields.
- */
 #[AsTwigComponent]
 class Register
 {

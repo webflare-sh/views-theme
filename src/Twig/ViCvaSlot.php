@@ -6,9 +6,6 @@ namespace Webflare\ViewsTheme\Twig;
 
 use Twig\Extra\Html\Cva;
 
-/**
- * CVA slot with attribute class extras already bound.
- */
 final class ViCvaSlot implements \Stringable
 {
     public function __construct(

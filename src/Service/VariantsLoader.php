@@ -70,9 +70,6 @@ class VariantsLoader
             ->addSorting(new FieldSorting('productNumber', FieldSorting::ASCENDING));
     }
 
-    /**
-     * Extracts the configurator groups (columns) from the loaded variants.
-     */
     public function extractConfiguratorGroups(SalesChannelProductCollection $variants): PropertyGroupCollection
     {
         $groups = [];

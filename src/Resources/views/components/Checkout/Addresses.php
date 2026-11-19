@@ -14,11 +14,6 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Checkout:Addresses — shipping and billing cards.
- * Template composes the section, title, columns, Address, and Address:Manager:Action.
- * `readOnly` (order recap): no context fallback, no shipping warning, no change action.
- */
 #[AsTwigComponent]
 class Addresses
 {

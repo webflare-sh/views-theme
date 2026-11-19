@@ -1,7 +1,4 @@
 /**
- * Repeat order — submit → `Cart:Add` (the Cart owner posts the form data and opens the drawer).
- * Replaces the native POST that redirected to the core offcanvas route.
- *
  * @extends {ShopwareComponent}
  */
 export default class OrderReorder extends ShopwareComponent {

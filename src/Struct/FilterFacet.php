@@ -6,12 +6,6 @@ namespace Webflare\ViewsTheme\Struct;
 
 use Webflare\ViewsTheme\Service\FilterComponents;
 
-/**
- * One renderable filter control for Filter:Panel.
- *
- * `component` is the UX tag for `component()`. `type` is the stable kind
- * (`FilterFacetType`) consumers branch on.
- */
 final readonly class FilterFacet
 {
     public string $type;

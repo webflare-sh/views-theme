@@ -15,6 +15,7 @@ Open the relevant links below and follow them. Full index: [docs/README.md](../R
 | **Holistic refactors (critical):** prefer root-cause / shared-pattern fixes — no hacky quick fixes | [agent-workflow.md — Holistic refactors](agent-workflow.md#prefer-holistic-refactors-critical) |
 | **No build steps (critical):** never run asset/theme/JS compile or watch | [agent-workflow.md — No build](agent-workflow.md#never-run-a-build-step-critical) |
 | **Surgical edits (critical):** no full-file overwrite for local fixes; preserve concurrent human edits | [agent-workflow.md — Surgical edits](agent-workflow.md#surgical-edits-only-critical) |
+| Code comments: non-obvious why only; annotations (JSDoc / PHPDoc tags) always stay | [agent-workflow.md — Code comments](agent-workflow.md#code-comments) |
 | UX tags, **prop defaults** (no wasteful `resolved*`), **class components** for heavy view-model, CVA, attributes, BEM `vi-*`, scope (`components/` only) | [ux-components.md § Props](ux-components.md#props) · [class components](ux-components.md#class-components-php-backed) |
 | Component template checklist | [components.md](components.md) |
 | CVA: `vi_define_cva` + `vi_class` (no `{% set cx %}`) | [vi-cva.md](../twig/vi-cva.md) |

@@ -2,8 +2,6 @@ import { createSerialQueue } from '@views-theme/modules/serial-queue.js'
 import { getCookie } from '@views-theme/modules/cookie/storage.js'
 
 /**
- * Wishlist mutation owner (HTTP + serial queue).
- *
  * @extends {ShopwareComponent}
  */
 export default class Wishlist extends ShopwareComponent {
@@ -18,7 +16,6 @@ export default class Wishlist extends ShopwareComponent {
         cookieName: 'wishlist-enabled',
         toggleEvent: 'ViewsTheme:Wishlist:Toggle',
         changedEvent: 'ViewsTheme:Wishlist:Changed',
-        /** Asks `Cookie:Bar` to open the consent request for `cookieName` */
         consentRequestEvent: 'ViewsTheme:Cookie:Consent:Request',
     }
 

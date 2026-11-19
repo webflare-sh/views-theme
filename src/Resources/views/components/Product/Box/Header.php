@@ -12,9 +12,6 @@ use Shopware\Core\System\SystemConfig\SystemConfigService;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Product:Box:Header — detail href + rating gate; Twig only composes.
- */
 #[AsTwigComponent]
 class Header
 {

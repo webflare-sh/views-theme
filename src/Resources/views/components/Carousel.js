@@ -10,14 +10,6 @@ const SETTLE_DELAY = 80
 const RESIZE_DELAY = 50
 
 /**
- * Scroll-snap carousel owner. Native scrolling (touch, trackpad, keyboard on
- * the focusable track) does the work; JS pages prev/next, scrolls to an item
- * (`goTo`), tracks the snapped item index, keeps it in place on resize and
- * keeps the controls' `disabled` state + host `data-overflow` in sync.
- *
- * After a **user** scroll settles on a new item it emits `changeEvent`
- * `{ el, index }`. Programmatic `goTo` scrolls never emit.
- *
  * @extends {ShopwareComponent}
  */
 export default class Carousel extends ShopwareComponent {
@@ -233,7 +225,6 @@ export default class Carousel extends ShopwareComponent {
             return
         }
 
-        // Width changed (resize, orientation, hidden pane shown): keep the current item in place
         this._width = width
         clearTimeout(this._resizeTimer)
         this._resizeTimer = setTimeout(() => {
@@ -241,9 +232,6 @@ export default class Carousel extends ShopwareComponent {
         }, RESIZE_DELAY)
     }
 
-    /**
-     * After a user scroll: adopt the snapped item and emit `changeEvent` when it changed.
-     */
     _settle() {
         const track = this._trackEl
         if (this._programmatic || !track || !track.clientWidth) {

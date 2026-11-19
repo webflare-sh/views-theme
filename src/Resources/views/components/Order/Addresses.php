@@ -11,10 +11,6 @@ use Shopware\Core\Framework\Feature;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Order:Addresses — order billing/shipping, 6.7 vs 6.8 delivery.
- * Template is a root-host of Address:List.
- */
 #[AsTwigComponent]
 class Addresses
 {

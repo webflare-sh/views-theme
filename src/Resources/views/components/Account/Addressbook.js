@@ -1,8 +1,6 @@
 import { getInstanceByElement } from '@views-theme/modules/shared/component.js'
 
 /**
- * Addressbook listing — client-side search filter.
- *
  * @extends {ShopwareComponent}
  */
 export default class AccountAddressbook extends ShopwareComponent {

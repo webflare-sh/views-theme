@@ -1,7 +1,4 @@
 /**
- * Fixed "back to top" button. Shows after `visibleFrom` px of scroll, scrolls to the top and
- * moves focus to `topElementId`.
- *
  * @extends {ShopwareComponent}
  */
 export default class ScrollUp extends ShopwareComponent {

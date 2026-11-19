@@ -13,8 +13,6 @@ const CAPTCHA_OWNS_SUBMIT = [
 ]
 
 /**
- * Public newsletter subscribe — JSON POST to the core newsletter route.
- *
  * @extends {ShopwareComponent}
  */
 export default class NewsletterForm extends ShopwareComponent {

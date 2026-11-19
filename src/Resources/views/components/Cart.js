@@ -2,8 +2,6 @@ import { createSerialQueue } from '@views-theme/modules/serial-queue.js'
 import { request as shippingRequest } from '@views-theme/modules/shipping/store.js'
 
 /**
- * Cart mutation owner (HTTP + serial queue).
- *
  * @extends {ShopwareComponent}
  */
 export default class Cart extends ShopwareComponent {

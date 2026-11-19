@@ -9,9 +9,6 @@ use Shopware\Core\Content\Product\SalesChannel\SalesChannelProductEntity;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Product:Cover — media + detail URL from product (scalars remain overridable).
- */
 #[AsTwigComponent]
 class Cover
 {

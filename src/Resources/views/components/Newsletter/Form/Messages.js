@@ -3,8 +3,6 @@ import { getInstanceByElement } from '@views-theme/modules/shared/component.js'
 const TYPES = ['success', 'info', 'warning', 'danger']
 
 /**
- * Renders newsletter route `{ type, alert }` items as theme alerts.
- *
  * @extends {ShopwareComponent}
  */
 export default class NewsletterFormMessages extends ShopwareComponent {
@@ -111,9 +109,6 @@ export default class NewsletterFormMessages extends ShopwareComponent {
     }
 
     /**
-     * Plain text stays as one message. HTML alerts (core `alert.html.twig`)
-     * become their list items, or the element's text when there is no list.
-     *
      * @param {unknown} alert
      * @returns {string[]}
      */

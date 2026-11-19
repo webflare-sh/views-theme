@@ -10,7 +10,6 @@ import {
  */
 export default class CartDrawerAction extends ShopwareComponent {
     static options = {
-        /** `<template>` with the data-free drawer shell (rendered next to the Action) */
         templateId: 'vi-cart-drawer-template',
         drawerComponentName: 'ViewsTheme:Drawer',
         drawerSelector: '#vi-cart-drawer',
@@ -43,10 +42,6 @@ export default class CartDrawerAction extends ShopwareComponent {
         this._unmountDrawer()
     }
 
-    /**
-     * Public API — header click, callMethod, and openOnActions auto-open.
-     * No-op when already open (Body refreshes on Cart:Changed).
-     */
     async open() {
         if (this._loading) {
             return
@@ -99,10 +94,6 @@ export default class CartDrawerAction extends ShopwareComponent {
         void this.open()
     }
 
-    /**
-     * Opens the shell straight away: no request before the drawer shows.
-     * `Cart:Drawer:Body` renders the loader and fetches the cart itself.
-     */
     async _mountAndOpenDrawer() {
         this._loading = true
         this.el.setAttribute('aria-busy', 'true')

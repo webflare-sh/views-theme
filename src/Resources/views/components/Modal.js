@@ -2,8 +2,6 @@ import { setBodyLock } from '@views-theme/modules/body-lock.js'
 import { trapFocus } from '@views-theme/modules/shared/focus-trap.js'
 
 /**
- * Centered card dialog shell — open/close, body lock, Escape, Tab trap.
- *
  * @extends {ShopwareComponent}
  */
 export default class Modal extends ShopwareComponent {

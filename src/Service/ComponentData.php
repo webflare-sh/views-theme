@@ -12,9 +12,6 @@ use Shopware\Storefront\Page\Checkout\Register\CheckoutRegisterPage;
 use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\HttpFoundation\Request;
 
-/**
- * Read posted bags / entities and build field view-models for class components.
- */
 final class ComponentData
 {
     public static function get(mixed $data, string $key): mixed

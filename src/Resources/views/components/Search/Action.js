@@ -10,7 +10,6 @@ import {
  */
 export default class SearchAction extends ShopwareComponent {
     static options = {
-        /** `<template>` with the static overlay shell (rendered next to the Action) */
         templateId: 'vi-search-overlay-template',
         overlayComponentName: 'ViewsTheme:Search:Overlay',
         overlaySelector: '[data-component="ViewsTheme:Search:Overlay"]',
@@ -38,10 +37,6 @@ export default class SearchAction extends ShopwareComponent {
         this._unmountOverlay()
     }
 
-    /**
-     * Public API — header click and callMethod.
-     * Optional term: set preserved term and/or re-apply when already open.
-     */
     async open({ term } = {}) {
         if (this._loading) {
             return

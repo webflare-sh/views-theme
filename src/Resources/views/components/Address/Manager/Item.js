@@ -1,8 +1,6 @@
 import { getInstanceByElement } from '@views-theme/modules/shared/component.js'
 
 /**
- * Selectable address row. One `Form:Selection` radio.
- *
  * @extends {ShopwareComponent}
  */
 export default class AddressManagerItem extends ShopwareComponent {

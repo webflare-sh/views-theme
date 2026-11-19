@@ -8,9 +8,6 @@ use Shopware\Core\Content\Product\SalesChannel\SalesChannelProductEntity;
 use Shopware\Core\Content\Seo\SeoUrlPlaceholderHandlerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
-/**
- * Listing-aware product detail URL (productId + optional search / referrerCategoryId).
- */
 final class ProductDetailUrlBuilder
 {
     public function __construct(

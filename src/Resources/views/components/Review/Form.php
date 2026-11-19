@@ -9,9 +9,6 @@ use Shopware\Core\Content\Product\SalesChannel\Review\ProductReviewResult;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Review:Form — login gate + field prefill; Twig composes.
- */
 #[AsTwigComponent]
 class Form
 {

@@ -50,6 +50,17 @@ Prefer **minimal, targeted patches**. Do **not** replace whole files when fixing
 
 Full-file overwrites are a common agent failure mode: a small rule fix clobbers intentional human changes that landed between turns.
 
+## Code comments
+
+Write a comment only when the code cannot say it: why a branch or value exists, a hidden constraint, a core / browser quirk, a security allowlist, or a workaround. Default to none.
+
+| Keep | Don't write |
+|------|-------------|
+| Annotations: JSDoc / PHPDoc tags (`@param`, `@var`, `@type`, `@typedef`, `@return`, `@extends`, `@template`, `@module`, `{@see}`) | Summaries that restate the class, function, option, or prop name ("View-model for X", "identity host", "Public API") |
+| Lint / analyzer directives, generated-file notices | Narration of what the next lines do, section labels |
+| Prop value lists ([ux-components.md](ux-components.md#annotate-possible-values)) and the empty `init()` note ([javascript.md](javascript.md)) | Architecture notes that belong in `docs/` (SoT, owner/executor, "mirrors X", "core parity") |
+| Empty `catch` / fall-through reasons | Commented-out code |
+
 ## MCP servers
 
 Claude Code loads three project servers from [`.mcp.json`](../../.mcp.json) (approve them once on first start):

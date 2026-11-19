@@ -38,8 +38,6 @@ final class ReviewPointsNormalizer
     }
 
     /**
-     * Normalize raw request `points` (scalar, list, or pipe-joined) to a string list.
-     *
      * @return list<string>
      */
     public static function toList(mixed $raw): array

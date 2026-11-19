@@ -2,10 +2,6 @@ import { getInstanceByElement } from '@views-theme/modules/lazy-shell.js'
 import { CLOSE_EVENT, snapshotState, submitConsent } from '@views-theme/modules/cookie/consent.js'
 
 /**
- * Cookie manager form (body of the cookie drawer): saves the selected cookies, or accepts all,
- * then closes the drawer. The switches are `input[name="cookie"]`; a disabled switch is a
- * technically required cookie.
- *
  * @extends {ShopwareComponent}
  */
 export default class CookieManager extends ShopwareComponent {

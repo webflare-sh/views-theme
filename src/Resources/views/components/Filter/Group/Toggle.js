@@ -1,4 +1,3 @@
-/** Presentational mount: click owned by Filter:Group. */
 /**
  * @extends {ShopwareComponent}
  */

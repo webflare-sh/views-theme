@@ -7,8 +7,6 @@ import {
 import { setFieldEnabled, setRequired } from '@views-theme/modules/shared/form.js'
 
 /**
- * Country change — load states, set zip / VAT / state required.
- *
  * @extends {ShopwareComponent}
  */
 export default class AddressInputCountry extends ShopwareComponent {
@@ -122,8 +120,6 @@ export default class AddressInputCountry extends ShopwareComponent {
     }
 
     /**
-     * Same name rule as Address:Input:Company.
-     *
      * @param {string} prefix
      * @returns {string}
      */
@@ -231,8 +227,6 @@ export default class AddressInputCountry extends ShopwareComponent {
     }
 
     /**
-     * One span class: full row when the state cell is hidden, half when it is shown.
-     *
      * @param {boolean} stateHidden
      */
     _setCountrySpan(stateHidden) {

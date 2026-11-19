@@ -7,9 +7,6 @@ namespace Webflare\ViewsTheme\Struct;
 use Webflare\ViewsTheme\Service\FilterComponents;
 use InvalidArgumentException;
 
-/**
- * Stable facet kind. Independent of the UX component name.
- */
 final class FilterFacetType
 {
     public const MULTI_SELECT = 'multi-select';

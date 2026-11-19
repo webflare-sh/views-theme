@@ -10,9 +10,6 @@ use Shopware\Core\Framework\DataAbstractionLayer\EntityCollection;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Sorting — maps sortings to Form:Select options; Twig composes shell.
- */
 #[AsTwigComponent]
 class Sorting
 {

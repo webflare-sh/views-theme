@@ -1,6 +1,4 @@
 /**
- * Toggles footer column content on small viewports via aria-expanded.
- * State SoT is ARIA (`aria-expanded`) + content `inert`; look follows CSS.
  * From collapseUntil up, CSS forces content open — inert stays off even when
  * aria-expanded is false.
  *

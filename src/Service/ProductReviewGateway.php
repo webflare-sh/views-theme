@@ -10,9 +10,6 @@ use Shopware\Core\Framework\Adapter\Request\RequestParamHelper;
 use Shopware\Core\System\SalesChannel\SalesChannelContext;
 use Symfony\Component\HttpFoundation\Request;
 
-/**
- * Thin load path for product reviews — core loader only. Controllers fire App hooks.
- */
 class ProductReviewGateway
 {
     public function __construct(

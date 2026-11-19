@@ -1,8 +1,6 @@
 import { applyReview } from '@views-theme/modules/review/apply.js'
 
 /**
- * Review sort control (URL SoT key: sort).
- *
  * @extends {ShopwareComponent}
  */
 export default class ReviewSort extends ShopwareComponent {

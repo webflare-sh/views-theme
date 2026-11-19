@@ -14,9 +14,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\UX\TwigComponent\ComponentRendererInterface;
 
-/**
- * Lazy drawer shells of the cookie consent: the cookie manager and the per-feature consent request.
- */
 #[Route(defaults: [PlatformRequest::ATTRIBUTE_ROUTE_SCOPE => [StorefrontRouteScope::ID]])]
 class CookieController extends AbstractComponentController
 {

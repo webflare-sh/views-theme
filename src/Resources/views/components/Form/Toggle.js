@@ -2,8 +2,6 @@ import { getInstanceByElement } from '@views-theme/modules/shared/component.js'
 import { setFieldEnabled } from '@views-theme/modules/shared/form.js'
 
 /**
- * Show/hide a field group from a switch or select control.
- *
  * @extends {ShopwareComponent}
  */
 export default class FormToggle extends ShopwareComponent {

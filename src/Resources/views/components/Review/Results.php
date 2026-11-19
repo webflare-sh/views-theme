@@ -11,9 +11,6 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Review:Results island — counts, sort, language filter state for Toolbar.
- */
 #[AsTwigComponent]
 class Results
 {
@@ -45,12 +42,8 @@ class Results
      */
     public array $sortOptions = [];
 
-    /**
-     * Owner component name for Pagination items.
-     */
     public string $ownerComponent = 'ViewsTheme:Review:Panel';
 
-    /** Optional list-region visibility (unused on Panel; form always visible under Teaser). */
     public bool $hidden = false;
 
     public function __construct(

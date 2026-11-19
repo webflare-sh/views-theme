@@ -12,9 +12,6 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-/**
- * View-model for Product:Configurator — switch target and selected seed.
- */
 #[AsTwigComponent]
 class Configurator
 {
