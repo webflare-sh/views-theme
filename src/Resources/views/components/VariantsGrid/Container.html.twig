@@ -91,12 +91,14 @@
                         :pageParameter="pageParameter"
                     />
                 </div>
-                <button
-                    type="submit"
-                    class="btn btn-primary variants-grid-buy-button"
-                >
-                    {{ 'detail.addProduct'|trans|sw_sanitize }}
-                </button>
+                {% block buy_button %}
+                    <button
+                        type="submit"
+                        class="btn btn-primary variants-grid-buy-button"
+                    >
+                        {{ 'detail.addProduct'|trans|sw_sanitize }}
+                    </button>
+                {% endblock %}
             </div>
         </form>
     {% endblock %}
