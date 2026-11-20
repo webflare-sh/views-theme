@@ -10,8 +10,8 @@ The header override replaces core `layout_header_navigation` content with `Page:
 
 | Piece | Responsibility |
 |-------|----------------|
-| `Navigation:Bar` | Horizontal top-level list; hover/focus intent; fetch + insert flyouts; one flyout shown at a time (`showPopover` / `hidePopover`); in-session flyout DOM cache; active path; prop `widthAnchor` applied to inserted flyouts |
-| `Navigation:Bar:Item` | Top-level link or folder button (`fw-semibold`, `fs-xxl-4` = 20px from `xxl`) + flyout trigger attrs (`aria-expanded` / `aria-controls` / `aria-haspopup`) + `caret-down` when children exist |
+| `Navigation:Bar` | Horizontal top-level bar (`<nav>` wraps the items directly, no list); hover/focus intent; fetch + insert flyouts; one flyout shown at a time (`showPopover` / `hidePopover`); in-session flyout DOM cache; active path; prop `widthAnchor` applied to inserted flyouts |
+| `Navigation:Bar:Item` | `<div>` wrapping the top-level link or folder button (`fw-semibold`, `fs-xxl-4` = 20px from `xxl`) + flyout trigger attrs (`aria-expanded` / `aria-controls` / `aria-haspopup`) + `caret-down` when children exist |
 | `Navigation:Flyout` | Panel markup only, no JS (`popover="manual"`, mega grid layout, CSS open/close motion, a11y region) |
 | `Navigation:Flyout:Column` | One first-level branch (heading + nested list) |
 | `Navigation:Flyout:Item` | Nested category link/folder; recurses to max depth |
@@ -41,7 +41,7 @@ The header override replaces core `layout_header_navigation` content with `Page:
 
 1. Header override passes `header.navigation` into `Page:Header:Main`
 2. Main renders `Navigation:Bar` with the tree
-3. Bar lists top-level items only (`navigation.tree`)
+3. Bar renders top-level items only (`navigation.tree`), directly inside the `<nav>` root (root CVA carries the flex row: `flex-wrap align-items-center gap-1`)
 4. Items with children expose `data-flyout-trigger`, `data-flyout-url`, `data-navigation-id`, and ARIA attrs
 5. Active styling from `window.activeNavigationId` / `window.activeNavigationPathIdList` → `data-active` on the trigger control
 6. Dual CSS anchors: Bar `--vi-navigation-bar` (flyout top / hover path); Header:Main `--vi-header-main` (flyout left/right width)
@@ -54,7 +54,7 @@ Every pointer / focus event resolves to one **intended** trigger (or none), and 
 |-------|--------|
 | `pointerover` the shown flyout (incl. hover bridge) | Keep it: cancels a pending switch / close |
 | `pointerover` / `focusin` a trigger | That trigger |
-| `pointerover` anything else in the bar (leaf item, empty list / nav space) | None |
+| `pointerover` anything else in the bar (leaf item, empty nav space) | None |
 | `pointerleave` the bar | None |
 | `focusout` to outside the bar (ignored while the bar is hovered) | None |
 
@@ -71,7 +71,7 @@ The Bar listens to bubbling `pointerover`, not `pointerenter`: moving from an it
 
 1. When the timer fires, the shown flyout (if any) gets `hidePopover()` and its trigger `aria-expanded="false"`
 2. The target flyout comes from the Bar cache, or is fetched from `frontend.views-theme.navigation.flyout`
-3. A fetched root is inserted **right after its trigger** inside the `<li>`, hidden (`popover="manual"`), with `--vi-flyout-width-anchor` set from `widthAnchor`. Tab order is trigger → flyout links → next trigger
+3. A fetched root is inserted **right after its trigger** inside the item `<div>`, hidden (`popover="manual"`), with `--vi-flyout-width-anchor` set from `widthAnchor`. Tab order is trigger → flyout links → next trigger
 4. If the intent is still that trigger, the Bar calls `showPopover()` and sets `aria-expanded="true"`
 5. Open and close motion are CSS only (`@starting-style`, `display` / `overlay` `allow-discrete`). Nothing waits for the transition, and closed flyouts stay in the DOM
 

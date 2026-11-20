@@ -7,6 +7,7 @@
 - Child themes that override the `buy` block of `Product:BuyContainer` and mount `VariantsGrid:Container` themselves should also pass `selectedOptionIds` and `optionsParameter` from `variantsGrid`. Without them a filtered link shows the right rows but no checked filter options.
 - `VariantsLoader::extractConfiguratorGroups()` was removed. The grid columns now come from the option groups of all visible variants (`VariantsLoader::loadOptionGroupsByParentId()`), and `VariantsLoader` takes `property_group_option.repository` as a second argument.
 - While rows load, the `is-loading` class is set on the grid form (`.variants-grid-form`) instead of `.variants-grid-container`, so the new filter stays usable. Child theme styles for the old selector must move.
+- `Navigation:Bar` no longer renders the `vi-navigation-bar__list` `<ul>`: the items sit directly in the `<nav>`, which now carries the flex layout (`flex-wrap align-items-center gap-1`). `Navigation:Bar:Item` renders a `<div>` instead of an `<li>`. Child themes that pass the `list` CVA key or `list:` attributes to the Bar, or style `.vi-navigation-bar__list` / `li.vi-navigation-bar-item`, must move them to the root or `.vi-navigation-bar-item`.
 
 **Changelog**
 - Adding products from the variants grid on the product page works again: the selected variants are added to the cart and the cart drawer opens (#178)

@@ -7,6 +7,7 @@
 - Child-Themes, die den `buy`-Block von `Product:BuyContainer` überschreiben und `VariantsGrid:Container` selbst einbinden, sollten zusätzlich `selectedOptionIds` und `optionsParameter` aus `variantsGrid` übergeben. Ohne sie zeigt ein gefilterter Link die richtigen Zeilen, aber keine ausgewählten Filteroptionen.
 - `VariantsLoader::extractConfiguratorGroups()` wurde entfernt. Die Spalten des Grids kommen jetzt aus den Optionsgruppen aller sichtbaren Varianten (`VariantsLoader::loadOptionGroupsByParentId()`), und `VariantsLoader` erhält `property_group_option.repository` als zweites Argument.
 - Während Zeilen laden, sitzt die Klasse `is-loading` auf dem Formular des Grids (`.variants-grid-form`) statt auf `.variants-grid-container`, damit der neue Filter bedienbar bleibt. Child-Theme-Styles für den alten Selektor müssen umziehen.
+- `Navigation:Bar` rendert die `<ul>` `vi-navigation-bar__list` nicht mehr: Die Einträge liegen direkt im `<nav>`, das jetzt das Flex-Layout trägt (`flex-wrap align-items-center gap-1`). `Navigation:Bar:Item` rendert ein `<div>` statt eines `<li>`. Child-Themes, die der Bar den CVA-Schlüssel `list` oder `list:`-Attribute übergeben oder `.vi-navigation-bar__list` / `li.vi-navigation-bar-item` stylen, müssen diese auf das Root-Element bzw. `.vi-navigation-bar-item` umstellen.
 
 **Changelog**
 - Das Hinzufügen von Produkten aus dem Varianten-Grid auf der Produktseite funktioniert wieder: Die gewählten Varianten landen im Warenkorb und der Warenkorb-Drawer öffnet sich (#178)
