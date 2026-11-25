@@ -1,4 +1,4 @@
-# 2.0.1
+# 2.1.0
 
 **Hinweise zum Update**
 - Das Formular des Varianten-Grids nutzt nicht mehr Shopwares `data-add-to-cart`. Das JS von `VariantsGrid:Container` schickt das Formular jetzt über den Theme-Warenkorb (`ViewsTheme:Cart:Add`), sodass sich nach dem Hinzufügen der Warenkorb-Drawer öffnet. Child-Themes, die den `form`-Block des Grids überschreiben und noch `data-add-to-cart="true"` setzen, müssen das Attribut entfernen.
@@ -10,8 +10,10 @@
 - `Navigation:Bar` rendert die `<ul>` `vi-navigation-bar__list` nicht mehr: Die Einträge liegen direkt im `<nav>`, das jetzt das Flex-Layout trägt (`flex-wrap align-items-center gap-1`). `Navigation:Bar:Item` rendert ein `<div>` statt eines `<li>`. Child-Themes, die der Bar den CVA-Schlüssel `list` oder `list:`-Attribute übergeben oder `.vi-navigation-bar__list` / `li.vi-navigation-bar-item` stylen, müssen diese auf das Root-Element bzw. `.vi-navigation-bar-item` umstellen.
 
 **Changelog**
-- Das Hinzufügen von Produkten aus dem Varianten-Grid auf der Produktseite funktioniert wieder: Die gewählten Varianten landen im Warenkorb und der Warenkorb-Drawer öffnet sich (#178)
 - Das Varianten-Grid lässt sich filtern: ein Dropdown pro Optionsgruppe (zum Beispiel Farbe und Größe), in dem mehrere Optionen gewählt werden können. Es werden nur passende Varianten gelistet, eingegebene Mengen bleiben erhalten, und die gefilterte Ansicht lässt sich als Link teilen
+- Das Gutscheincode-Feld in der Warenkorb-Seitenleiste und im Warenkorb-Drawer lässt sich in den Plugin-Einstellungen ausblenden
+- Der Widerrufshinweis über dem AGB-Hinweis auf der Bestellbestätigungsseite lässt sich in den Plugin-Einstellungen ausblenden
+- Das Hinzufügen von Produkten aus dem Varianten-Grid auf der Produktseite funktioniert wieder: Die gewählten Varianten landen im Warenkorb und der Warenkorb-Drawer öffnet sich (#178)
 - Beschriftungen und Hilfetexte der Theme-Einstellungen kommen jetzt aus Administrations-Snippets statt aus Inline-Übersetzungen in der `theme.json`, die Shopware 6.7 als veraltet markiert. Auf Deutsch und Englisch lauten sie wie bisher (#156)
 
 # 2.0.0

@@ -1,4 +1,4 @@
-# 2.0.1
+# 2.1.0
 
 **Upgrade notes**
 - The variants grid form no longer uses Shopware's `data-add-to-cart`. Its `VariantsGrid:Container` JS now sends the form through the theme cart (`ViewsTheme:Cart:Add`), so the cart drawer opens after adding. Child themes that override the grid's `form` block and still set `data-add-to-cart="true"` must remove it.
@@ -10,8 +10,10 @@
 - `Navigation:Bar` no longer renders the `vi-navigation-bar__list` `<ul>`: the items sit directly in the `<nav>`, which now carries the flex layout (`flex-wrap align-items-center gap-1`). `Navigation:Bar:Item` renders a `<div>` instead of an `<li>`. Child themes that pass the `list` CVA key or `list:` attributes to the Bar, or style `.vi-navigation-bar__list` / `li.vi-navigation-bar-item`, must move them to the root or `.vi-navigation-bar-item`.
 
 **Changelog**
-- Adding products from the variants grid on the product page works again: the selected variants are added to the cart and the cart drawer opens (#178)
 - The variants grid can be filtered: one dropdown per option group (for example color and size) where several options can be selected. Only matching variants are listed, entered quantities are kept, and the filtered page can be shared as a link
+- The promotion code field in the cart page sidebar and cart drawer can be turned off in the plugin settings
+- The revocation notice above the terms of service on the checkout confirmation page can be turned off in the plugin settings
+- Adding products from the variants grid on the product page works again: the selected variants are added to the cart and the cart drawer opens (#178)
 - The labels and help texts of the theme settings now come from Administration snippets instead of inline translations in `theme.json`, which Shopware 6.7 deprecates. They read the same in English and German (#156)
 
 # 2.0.0
